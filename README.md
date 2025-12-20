@@ -1,16 +1,28 @@
-# React + Vite
+TechMorphix Portfolio Website 🚀
+A modern, high-performance portfolio website built with cutting-edge web technologies. Features smooth animations, responsive design, and an elegant user experience.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+✨ Features
+🎨 Modern UI/UX - Clean, minimalist design with dark/light mode support
 
-Currently, two official plugins are available:
+⚡ GSAP Animations - Smooth scroll-triggered animations and page transitions
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+📱 Fully Responsive - Mobile-first approach with Tailwind CSS
 
-## React Compiler
+🚀 Page Transitions - Custom Digital Curtain transition effects
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+🔧 Interactive Components - Dynamic filtering, load more, and hover effects
 
-## Expanding the ESLint configuration
+🎯 Performance Optimized - Lazy loading, optimized images, and efficient code
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🌙 Theme Support - Dark/Light mode with system preference detection
+
+🛠 Tech Stack
+Technology	Purpose
+React 18	Frontend framework
+Vite	Build tool & dev server
+Tailwind CSS	Utility-first styling
+GSAP + ScrollTrigger	Advanced animations
+Framer Motion	React animation library
+React Router DOM	Client-side routing
+Lucide React	Icon library
+ESLint + Prettier	Code quality & formatting
