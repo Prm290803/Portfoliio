@@ -8,9 +8,9 @@ import { LenisProvider } from './Lenis.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
-    <LenisProvider>
+    
     <App />
-    </LenisProvider>
+    
     </BrowserRouter>
   </StrictMode>,
 )
