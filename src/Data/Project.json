@@ -1,0 +1,124 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "Fintech Dashboard",
+      "category": "Web Development",
+      "year": "2024",
+      "size": "large",
+      "description": "A comprehensive financial analytics platform with real-time data visualization.",
+      "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+      "tags": ["React", "TypeScript", "Chart.js", "Node.js", "PostgreSQL"]
+    },
+    {
+      "id": 2,
+      "title": "E-Commerce Platform",
+      "category": "Full Stack",
+      "year": "2024",
+      "size": "small",
+      "description": "Modern shopping experience with seamless checkout and inventory management.",
+      "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+      "tags": ["Next.js", "Stripe", "MongoDB", "Tailwind", "Redux"]
+    },
+    {
+      "id": 3,
+      "title": "Health & Wellness App",
+      "category": "Mobile Development",
+      "year": "2023",
+      "size": "small",
+      "description": "iOS and Android app for tracking fitness goals and mental wellness.",
+      "image": "https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+      "tags": ["React Native", "Firebase", "Redux", "HealthKit", "Figma"]
+    },
+    {
+      "id": 4,
+      "title": "Corporate Website Redesign",
+      "category": "UI/UX Design",
+      "year": "2024",
+      "size": "large",
+      "description": "Complete brand overhaul and website redesign for a Fortune 500 company.",
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+      "tags": ["Figma", "Adobe XD", "Webflow", "SEO", "Branding"]
+    },
+    {
+      "id": 5,
+      "title": "SaaS Analytics Tool",
+      "category": "Custom Software",
+      "year": "2023",
+      "size": "small",
+      "description": "Enterprise-grade analytics solution for marketing teams.",
+      "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+      "tags": ["Python", "Django", "React", "AWS", "Docker"]
+    },
+    {
+      "id": 6,
+      "title": "Restaurant Ordering System",
+      "category": "Web Development",
+      "year": "2023",
+      "size": "small",
+      "description": "Digital ordering and management system for restaurant chains.",
+      "image": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+      "tags": ["Vue.js", "Node.js", "MySQL", "WebSockets", "Payment Gateway"]
+    },
+    {
+      "id": 7,
+      "title": "AI Content Generator",
+      "category": "Custom Software",
+      "year": "2024",
+      "size": "large",
+      "description": "AI-powered content creation platform with natural language processing.",
+      "image": "https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+      "tags": ["OpenAI API", "Python", "FastAPI", "React", "PostgreSQL"]
+    },
+    {
+      "id": 8,
+      "title": "Fitness Tracking Mobile App",
+      "category": "Mobile Development",
+      "year": "2023",
+      "size": "small",
+      "description": "Comprehensive fitness tracking with workout plans and nutrition guides.",
+      "image": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+      "tags": ["Flutter", "Firebase", "Google Fit API", "Cloud Functions"]
+    },
+    {
+      "id": 9,
+      "title": "Real Estate Portal",
+      "category": "Web Development",
+      "year": "2024",
+      "size": "large",
+      "description": "Advanced property listing platform with virtual tours and AI recommendations.",
+      "image": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+      "tags": ["Next.js", "Mapbox", "Stripe", "MongoDB", "Cloudinary"]
+    },
+    {
+      "id": 10,
+      "title": "E-Learning Platform",
+      "category": "Full Stack",
+      "year": "2024",
+      "size": "large",
+      "description": "Interactive learning platform with video courses, quizzes, and progress tracking.",
+      "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+      "tags": ["React", "Node.js", "Video Streaming", "MongoDB", "Payment Processing"]
+    },
+    {
+      "id": 11,
+      "title": "Banking Mobile App",
+      "category": "Mobile Development",
+      "year": "2024",
+      "size": "small",
+      "description": "Secure mobile banking application with biometric authentication.",
+      "image": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+      "tags": ["React Native", "Biometric Auth", "Banking API", "Security", "Push Notifications"]
+    },
+    {
+      "id": 12,
+      "title": "Portfolio Website Design",
+      "category": "UI/UX Design",
+      "year": "2023",
+      "size": "small",
+      "description": "Modern portfolio website for a creative agency with interactive animations.",
+      "image": "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+      "tags": ["Figma", "GSAP", "Responsive Design", "Accessibility", "Performance"]
+    }
+  ]
+}

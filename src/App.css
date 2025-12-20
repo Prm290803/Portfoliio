@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+/* Add to your global CSS file */
+@keyframes grid-scroll {
+  0% { background-position: 0 0; }
+  100% { background-position: 50px 50px; }
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+.animate-grid-scroll {
+  background-image: 
+    linear-gradient(to right, #000 1px, transparent 1px),
+    linear-gradient(to bottom, #000 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: grid-scroll 20s linear infinite;
+}
+
+.animate-shine {
+  animation: shine 2s ease-in-out infinite;
+}
+
+.bg-grid-pattern {
+  background-size: 50px 50px;
+}
+
+.writing-mode-vertical {
+  writing-mode: vertical-rl;
+}

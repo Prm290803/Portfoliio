@@ -1,0 +1,315 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@100;200;300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 255 255 255;
+    --foreground: 0 0 0;
+    --muted-foreground: 100 116 139;
+    --secondary: 241 245 249;
+    --border: 229 231 235;
+    --ring: 0 0 0;
+  }
+
+  .dark {
+    --background: 10 10 10;
+    --foreground: 255 255 255;
+    --muted-foreground: 148 163 184;
+    --secondary: 30 41 59;
+    --border: 38 38 38;
+    --ring: 255 255 255;
+  }
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    border-color: rgba(var(--border), 1);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: rgba(var(--background), 1);
+    color: rgba(var(--foreground), 1);
+    font-family: 'Archivo', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "ss01", "ss02", "cv01";
+  }
+
+  ::selection {
+    background-color: rgba(var(--foreground), 1);
+    color: rgba(var(--background), 1);
+  }
+}
+
+@layer components {
+  /* Editorial Typography */
+  .headline-xl {
+    font-size: clamp(2.5rem, 10vw, 12rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 0.85;
+    top:100vh;
+    letter-spacing: -0.04em;
+  }
+
+  .headline-lg {
+    font-size: clamp(2rem, 8vw, 6rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+  }
+
+  .headline-md {
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+  }
+
+  .body-editorial {
+    font-size: 1rem;
+    line-height: 1.75;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+  }
+
+  .label-vertical {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-family: 'Space Mono', monospace;
+  }
+
+  .label-editorial {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    font-family: 'Space Mono', monospace;
+    color: rgba(var(--muted-foreground), 1);
+  }
+
+  /* Dividers */
+  .divider-thin {
+    height: 1px;
+    width: 100%;
+    background-color: rgba(var(--foreground), 0.1);
+  }
+
+  .divider-thick {
+    height: 2px;
+    width: 100%;
+    background-color: rgba(var(--foreground), 1);
+  }
+
+  /* Editorial Button Styles */
+  .btn-editorial {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    border: 1px solid rgba(var(--foreground), 1);
+    background-color: transparent;
+    color: rgba(var(--foreground), 1);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-weight: 500;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    min-height: 44px;
+  }
+
+  .btn-editorial:hover {
+    background-color: rgba(var(--foreground), 1);
+    color: rgba(var(--background), 1);
+  }
+
+  .btn-editorial-filled {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    border: 1px solid rgba(var(--foreground), 1);
+    background-color: rgba(var(--foreground), 1);
+    color: rgba(var(--background), 1);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-weight: 500;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    min-height: 44px;
+  }
+
+  .btn-editorial-filled:hover {
+    background-color: transparent;
+    color: rgba(var(--foreground), 1);
+  }
+}
+
+@layer utilities {
+  .text-stroke {
+    -webkit-text-stroke: 1px currentColor;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Marquee Animation */
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 25s linear infinite;
+  }
+
+  /* Container */
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1280px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Aspect Ratios */
+  .aspect-editorial {
+    aspect-ratio: 16/10;
+  }
+
+  .aspect-featured {
+    aspect-ratio: 21/9;
+  }
+
+  /* Glass Morphism */
+  .glass {
+    backdrop-filter: blur(12px);
+    background-color: rgba(var(--background), 0.8);
+  }
+}
+
+/* Character Reveal Animation */
+@keyframes charReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(100%) rotate(5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(0);
+  }
+}
+
+.animate-char {
+  animation: charReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(var(--secondary), 1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(var(--foreground), 0.3);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(var(--foreground), 0.5);
+}
+
+/* Responsive adjustments */
+@media (min-width: 640px) {
+  .headline-xl {
+    font-size: clamp(3rem, 12vw, 12rem);
+  }
+  
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .body-editorial {
+    font-size: 1.125rem;
+  }
+  
+  .text-stroke {
+    -webkit-text-stroke: 2px currentColor;
+  }
+  
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  
+  .btn-editorial,
+  .btn-editorial-filled {
+    padding: 1.25rem 2.5rem;
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .headline-lg {
+    font-size: clamp(1.75rem, 6vw, 4rem);
+  }
+  
+  .headline-md {
+    font-size: clamp(1.25rem, 4vw, 2.5rem);
+  }
+  
+  .btn-editorial,
+  .btn-editorial-filled {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.75rem;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
