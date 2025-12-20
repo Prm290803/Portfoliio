@@ -1,54 +1,67 @@
-import { useState, useEffect } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
-import { AnimatePresence } from "framer-motion";
+import React from 'react'
+import './App.css'
+import { useState, useEffect } from 'react';
+import {LenisProvider} from './Lenis';
+import HomePage from './Pages/HomePage/homepage'
+import Loader from './IntroAnimation';
+import { AnimatePresence } from 'framer-motion';
+import About from './Pages/About/about';
+import Contact from './Pages/Contact/contact';
+import Services from './Pages/Services/services';
+import Work from './Pages/Work/Work';
+import Process from './Pages/Process/Process';
+import ScrollTop from './components/ScrollTop';
 
-import HomePage from "./Pages/HomePage/homepage";
-import About from "./Pages/About/about";
-import Contact from "./Pages/Contact/contact";
-import Services from "./Pages/Services/services";
-import Work from "./Pages/Work/Work";
-import Process from "./Pages/Process/Process";
-import Loader from "./IntroAnimation";
-import ScrollTop from "./components/ScrollTop";
+import { BrowserRouter as Router, Routes, Route, useLocation  } from 'react-router-dom';
 
 function App() {
-  const location = useLocation();
   const [loading, setLoading] = useState(true);
-
-  const isHomePage = location.pathname === "/";
-
+  const location = useLocation();
+  
+  // Only show loader on home page initial load
+  const isHomePage = location.pathname === '/';
+  
   useEffect(() => {
+    // Only run loader logic for home page
     if (isHomePage) {
       const timer = setTimeout(() => {
         setLoading(false);
-      }, 3600);
+      }, 3600); // ⏱️ loader duration
 
       return () => clearTimeout(timer);
     } else {
+      // For other pages, don't show loader
       setLoading(false);
     }
   }, [isHomePage]);
 
   return (
-    <>
-      <ScrollTop />
-
-      <AnimatePresence mode="wait">
-        {loading && isHomePage ? (
-          <Loader key="loader" />
-        ) : (
-          <Routes location={location} key={location.pathname}>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/work" element={<Work />} />
-            <Route path="/process" element={<Process />} />
-          </Routes>
-        )}
-      </AnimatePresence>
-    </>
+    <AnimatePresence mode="wait">
+      {loading && isHomePage ? (
+        <Loader key="loader" />
+      ) : (
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/work" element={<Work />} />
+          <Route path="/process" element={<Process />} />
+        </Routes>
+      )}
+    </AnimatePresence>
   );
 }
 
-export default App;
+// Wrap App with Router properly
+export default function AppWrapper() {
+  return (
+   <AnimatePresence>
+    <LenisProvider>
+      <ScrollTop />
+      <App />
+    </LenisProvider>
+    </AnimatePresence>
+   
+  );
+}

@@ -5,18 +5,15 @@ import { motion } from "framer-motion";
 
 export const Layout = ({ children }) => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div id="lenis-root" className="min-h-screen flex flex-col">
       <Header />
 
-      <main className="flex-grow"
-      >
+      <main className="flex-1 relative">
         {children}
       </main>
 
       <Footer />
-
-      {/* 🔥 Back to top button */}
-      <BackToTop />
     </div>
   );
 };
+

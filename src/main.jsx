@@ -1,16 +1,15 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
-import { BrowserRouter } from 'react-router-dom'
-import { LenisProvider } from './Lenis.jsx'
-
-createRoot(document.getElementById('root')).render(
+import React, { StrictMode } from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import App from "./App";
+import { LenisProvider } from "./Lenis";
+import "lenis/dist/lenis.css";  
+ReactDOM.createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <BrowserRouter>
-    
-    <App />
-    
-    </BrowserRouter>
-  </StrictMode>,
-)
+  <BrowserRouter>
+    <LenisProvider>
+      <App />
+    </LenisProvider>
+  </BrowserRouter>
+  </StrictMode>
+);
