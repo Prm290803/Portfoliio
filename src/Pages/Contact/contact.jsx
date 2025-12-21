@@ -5,7 +5,7 @@ import { ArrowUpRight, Mail, Phone, MapPin } from 'lucide-react';
 import { Layout } from '../../components/Layout';
 import { useToast } from '../../components/hooks/use-toast';
 import emailjs from "@emailjs/browser";
-import PageTransition from "../../PageTransition";
+import PageTransition from "../../components/PageTransition";
 
 
 gsap.registerPlugin(ScrollTrigger);

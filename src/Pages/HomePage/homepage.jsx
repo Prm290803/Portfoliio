@@ -5,7 +5,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowUpRight, ArrowDown } from 'lucide-react';
 import { Layout } from '../../components/Layout';
-import PageTransition from "../../PageTransition";
+import PageTransition from "../../components/PageTransition";
 import './homepage.css';
 
 // Import placeholder images

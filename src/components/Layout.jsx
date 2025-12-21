@@ -2,7 +2,7 @@ import { Header } from "./Header";
 import { Footer } from "./Footer";
 import BackToTop from "./BackToTop";
 import { motion } from "framer-motion";
-
+import '../App.css'
 export const Layout = ({ children }) => {
   return (
     <div id="lenis-root" className="min-h-screen flex flex-col">

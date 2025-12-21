@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Layout } from '../../components/Layout';
-import PageTransition from '../../PageTransition';
+import PageTransition from '../../components/PageTransition';
 
 const steps = [
   {

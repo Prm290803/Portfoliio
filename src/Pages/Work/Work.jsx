@@ -3,7 +3,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowUpRight } from 'lucide-react';
 import { Layout } from '../../components/Layout';
-import PageTransition from "../../PageTransition";
+import PageTransition from "../..//components/PageTransition";
 import projectData from '../../Data/Project.json';
 
 const categories = ['All', 'Web Development', 'Mobile Development', 'UI/UX Design', 'Full Stack', 'Custom Software'];
