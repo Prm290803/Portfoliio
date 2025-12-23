@@ -105,7 +105,7 @@ const Home = () => {
 
   return (
     <>
-    <Snowfall snowflakeCount={100} color='grey-200' />
+    
 
     <Layout>
       <PageTransition >
