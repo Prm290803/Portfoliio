@@ -7,6 +7,8 @@ import { ArrowUpRight, ArrowDown } from 'lucide-react';
 import { Layout } from '../../components/Layout';
 import PageTransition from "../../components/PageTransition";
 import './homepage.css';
+import { useLenis } from '../../Lenis'; // adjust path
+import {Snowfall} from 'react-snowfall';
 
 // Import placeholder images
 const projectFintech = 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80';
@@ -102,6 +104,9 @@ const Home = () => {
   }, []);
 
   return (
+    <>
+    <Snowfall snowflakeCount={100} color='grey-200' />
+
     <Layout>
       <PageTransition >
       <div ref={heroRef}>
@@ -468,6 +473,7 @@ const Home = () => {
       </div>
       </PageTransition>
     </Layout>
+    </>
   );
 };
 

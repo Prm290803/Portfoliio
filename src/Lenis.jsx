@@ -8,17 +8,10 @@ export const LenisProvider = ({ children }) => {
   const lenisRef = useRef(null);
 
   useEffect(() => {
-    const root = document.getElementById("lenis-root");
-
-    // 🚨 IMPORTANT: wait until layout exists
-    if (!root) return;
-
     const lenis = new Lenis({
       lerp: 0.08,
       smoothWheel: true,
       syncTouch: true,
-      wrapper: root,
-      content: root,
     });
 
     lenisRef.current = lenis;
@@ -28,7 +21,6 @@ export const LenisProvider = ({ children }) => {
       lenis.raf(time);
       rafId = requestAnimationFrame(raf);
     };
-
     rafId = requestAnimationFrame(raf);
 
     return () => {
@@ -46,6 +38,6 @@ export const LenisProvider = ({ children }) => {
 };
 
 export const useLenis = () => {
-  const context = useContext(LenisContext);
-  return context?.current;
+  const ctx = useContext(LenisContext);
+  return ctx?.current;
 };

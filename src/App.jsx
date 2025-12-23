@@ -72,12 +72,14 @@ import { LenisProvider } from "./Lenis";
 import DigitalCurtainTransition from "./components/PageTransition";
 
 import HomePage from "./Pages/HomePage/homepage";
-
+import './App.css'
+import './index.css'
 import About from "./Pages/About/about";
 import Contact from "./Pages/Contact/contact";
 import Services from "./Pages/Services/services";
 import Work from "./Pages/Work/Work";
 import Process from "./Pages/Process/Process";
+import Team from "./Pages/Team/Team";
 import Loader from "./IntroAnimation";
 import { useEffect, useState } from "react";
 
@@ -108,6 +110,7 @@ export default function App() {
               <Route path="/services" element={<Services />} />
               <Route path="/work" element={<Work />} />
               <Route path="/process" element={<Process />} />
+              <Route path="/team" element={<Team />} />
             </Routes>
           )}
         </AnimatePresence>

@@ -296,9 +296,9 @@ const Contact = () => {
                 <div className="space-y-12">
                   <div>
                     <span className="label-editorial text-muted-foreground mb-4 block">Email</span>
-                    <a href="mailto:hello@techmorphix.com" className="text-xl md:text-2xl font-medium hover:text-muted-foreground transition-colors flex items-center gap-3">
+                    <a href="mailto:hello@buildcrew.com" className="text-xl md:text-2xl font-medium hover:text-muted-foreground transition-colors flex items-center gap-3">
                       <Mail className="w-5 h-5" />
-                      hello@techmorphix.com
+                      hello@buildcrew.com
                     </a>
                   </div>
 

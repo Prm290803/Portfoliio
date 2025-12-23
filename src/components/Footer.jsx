@@ -9,26 +9,34 @@ import {
   Phone,
   MapPin
 } from 'lucide-react';
+import { useLenis } from '../Lenis'; // adjust path
+
 
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const lenis = useLenis();
 
   const scrollToSection = (id) => {
-    if (id.startsWith('#')) {
-      const element = document.querySelector(id);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  };
+  const el = document.querySelector(id);
+  if (!el || !lenis) return;
+
+  lenis.scrollTo(el, {
+    offset: -80, // header height
+    duration: 1.2,
+    easing: (t) => 1 - Math.pow(1 - t, 3),
+  });
+};
 
   const handleNavClick = (e, path, name) => {
-    if (window.location.pathname === '/' && path !== '/') {
+  if (window.location.pathname === '/' && path !== '/') {
+    const target = document.querySelector(`#${name.toLowerCase()}`);
+    if (target) {
       e.preventDefault();
       scrollToSection(`#${name.toLowerCase()}`);
     }
-  };
+  }
+};
 
   const navigationItems = [
     { name: 'Home', path: '/' },
@@ -70,8 +78,8 @@ export const Footer = () => {
   const contactInfo = [
     {
       icon: Mail,
-      content: 'hello@techmorphix.com',
-      href: 'mailto:hello@techmorphix.com',
+      content: 'hello@buildcrew.com',
+      href: 'mailto:hello@buildcrew.com',
       type: 'email'
     },
     {
@@ -102,7 +110,7 @@ export const Footer = () => {
           <div className="md:col-span-6 lg:col-span-6">
              <div className='mb-7'>
         <span className="text-3xl md:text-4xl font-black uppercase tracking-[-0.02em]">
-          Tech<span className="text-stroke text-white">Morphix</span>
+          Build<span className="text-stroke text-white">Crew <br/> Studio</span>
         </span>
       </div>
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 leading-tight">
@@ -262,7 +270,7 @@ export const Footer = () => {
                 </Link>
               </div>
               <p className="text-sm text-gray-400 mt-2 md:mt-0">
-                © {currentYear} TechMorphix. All rights reserved.
+                © {currentYear} BuildCrew Studio. All rights reserved.
               </p>
             </div>
           </div>
@@ -280,3 +288,4 @@ export const Footer = () => {
     </footer>
   );
 };
+export default Footer;

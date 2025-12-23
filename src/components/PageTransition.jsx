@@ -255,7 +255,7 @@ const DigitalCurtainTransition = ({ children }) => {
           zIndex: 10000
         }}>
             <span className="text-xl md:text-2xl font-black uppercase tracking-[-0.02em] text-foreground">
-                Tech<span className="text-stroke">Morphix</span>
+                Build<span className="text-stroke">Crew</span>
               </span>          <ArrowUpRight style={{ 
             width: '16px', 
             height: '16px',
