@@ -211,11 +211,6 @@ const Loader = ({ onComplete }) => {
           transition={{ delay: 0.2, duration: 0.8 }}
         >
           <div className="flex flex-col items-center">
-            <img 
-              src="/Logo.png" 
-              alt="BuildCrew Logo" 
-              className="h-10 w-8 sm:h-14 sm:w-10 md:h-18 md:w-14 mb-2"
-            />
             <div className="text-[10px] sm:text-xs md:text-sm tracking-[0.15em] sm:tracking-[0.2em] text-black/40 uppercase font-light">
               BuildCrew
             </div>

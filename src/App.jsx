@@ -14,8 +14,8 @@ import Process from "./Pages/Process/Process";
 import Team from "./Pages/Team/Team";
 import Loader from "./IntroAnimation";
 import { useEffect, useState } from "react";
-import ProjectPage from './Pages/Work/ProjectPage';
-import ServiceDetail from "./Pages/Services/serviceDetails";
+import ProjectPage from "./Pages/Work/ProjectPage";
+import ServiceDetail from "./Pages/Services/ServiceDetails";
 
 export default function App() {
   const location = useLocation();
