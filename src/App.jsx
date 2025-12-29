@@ -9,7 +9,7 @@ import './index.css'
 import About from "./Pages/About/about";
 import Contact from "./Pages/Contact/contact";
 import Services from "./Pages/Services/services";
-import ServiceDetail from "./pages/Services/ServiceDetails";
+// import ServiceDetail from "./Pages/Services/serviceDetails";
 import Work from "./Pages/Work/Work";
 import Process from "./Pages/Process/Process";
 import Team from "./Pages/Team/Team";
