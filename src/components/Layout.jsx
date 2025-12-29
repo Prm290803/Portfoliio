@@ -8,11 +8,10 @@ export const Layout = ({ children }) => {
   return (
     <div id="lenis-root" className="min-h-screen flex flex-col">
       <Header />
-      <Snowfall snowflakeCount={100} color='grey' />
+      {/* <Snowfall snowflakeCount={100} color='red' /> */}
       <main className="flex-1 relative">
         {children}
       </main>
-
       <Footer />
     </div>
   );

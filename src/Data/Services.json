@@ -1,0 +1,530 @@
+{
+  "services": [
+    {
+      "id": 1,
+      "slug": "web-development",
+      "number": "01",
+      "title": "Web Development",
+      "description": "Custom websites and web applications built with modern technologies for optimal performance and scalability.",
+      "icon": "Globe",
+      "features": [
+        "React & Next.js",
+        "Performance Optimization",
+        "SEO Best Practices",
+        "Responsive Design",
+        "Progressive Web Apps",
+        "E-commerce Solutions"
+      ],
+      "detailedDescription": "We build high-performance, scalable web applications using cutting-edge technologies. Our web development services focus on creating seamless user experiences, optimized performance, and robust security.",
+      
+      "process": [
+        {
+          "step": "01",
+          "title": "Discovery & Planning",
+          "description": "We analyze your requirements and create a detailed project plan."
+        },
+        {
+          "step": "02",
+          "title": "Design & Prototyping",
+          "description": "Create wireframes and prototypes for user experience validation."
+        },
+        {
+          "step": "03",
+          "title": "Development",
+          "description": "Agile development with regular iterations and client feedback."
+        },
+        {
+          "step": "04",
+          "title": "Testing & Deployment",
+          "description": "Rigorous testing and seamless deployment to production."
+        }
+      ],
+      
+      "technologies": [
+        "React.js",
+        "Next.js",
+        "TypeScript",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "PostgreSQL",
+        "Tailwind CSS",
+        "GSAP",
+        "Framer Motion"
+      ],
+      
+      "caseStudies": [
+        {
+          "title": "E-commerce Platform",
+          "description": "Built a scalable e-commerce solution with real-time inventory management."
+        },
+        {
+          "title": "SaaS Dashboard",
+          "description": "Developed an analytics dashboard with real-time data visualization."
+        }
+      ],
+      
+      "benefits": [
+        "Improved performance and load times",
+        "Enhanced SEO rankings",
+        "Better user engagement",
+        "Scalable architecture",
+        "Reduced maintenance costs"
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "ui-ux-design",
+      "number": "02",
+      "title": "UI/UX Design",
+      "description": "User-centered design solutions that combine aesthetics with functionality to create memorable experiences.",
+      "icon": "Palette",
+      "features": [
+        "User Research",
+        "Wireframing & Prototyping",
+        "Visual Design",
+        "Design Systems",
+        "Usability Testing",
+        "Design Audits"
+      ],
+      "detailedDescription": "We create intuitive and visually stunning interfaces that prioritize user experience. Our design process focuses on understanding user behavior and creating solutions that are both beautiful and functional.",
+      
+      "process": [
+        {
+          "step": "01",
+          "title": "User Research",
+          "description": "Conduct user interviews and analyze market trends."
+        },
+        {
+          "step": "02",
+          "title": "Information Architecture",
+          "description": "Structure content and create user flows."
+        },
+        {
+          "step": "03",
+          "title": "Wireframing",
+          "description": "Create low-fidelity prototypes for structure validation."
+        },
+        {
+          "step": "04",
+          "title": "Visual Design",
+          "description": "Apply brand identity and create high-fidelity designs."
+        },
+        {
+          "step": "05",
+          "title": "Testing & Iteration",
+          "description": "User testing and design refinements."
+        }
+      ],
+      
+      "technologies": [
+        "Figma",
+        "Adobe XD",
+        "Sketch",
+        "InVision",
+        "Framer",
+        "Principle",
+        "Miro",
+        "Notion"
+      ],
+      
+      "caseStudies": [
+        {
+          "title": "Banking App Redesign",
+          "description": "Redesigned mobile banking app, improving user retention by 40%."
+        },
+        {
+          "title": "Healthcare Portal",
+          "description": "Created intuitive patient portal with appointment scheduling."
+        }
+      ],
+      
+      "benefits": [
+        "Increased user satisfaction",
+        "Higher conversion rates",
+        "Reduced development costs",
+        "Improved brand perception",
+        "Better accessibility"
+      ]
+    },
+    {
+      "id": 3,
+      "slug": "mobile-apps",
+      "number": "03",
+      "title": "Mobile Apps",
+      "description": "Native and cross-platform mobile applications that deliver seamless experiences on any device.",
+      "icon": "Smartphone",
+      "features": [
+        "iOS & Android",
+        "React Native",
+        "Flutter",
+        "App Store Optimization",
+        "Push Notifications",
+        "Offline Functionality"
+      ],
+      "detailedDescription": "We develop high-performance mobile applications for both iOS and Android platforms. Our focus is on creating smooth, responsive, and engaging mobile experiences that users love.",
+      
+      "process": [
+        {
+          "step": "01",
+          "title": "Concept Development",
+          "description": "Define app features and user personas."
+        },
+        {
+          "step": "02",
+          "title": "UI/UX Design",
+          "description": "Create mobile-specific interfaces and interactions."
+        },
+        {
+          "step": "03",
+          "title": "Development",
+          "description": "Build using React Native, Flutter, or native technologies."
+        },
+        {
+          "step": "04",
+          "title": "Testing",
+          "description": "Device testing and performance optimization."
+        },
+        {
+          "step": "05",
+          "title": "App Store Submission",
+          "description": "Prepare and submit to Apple App Store and Google Play."
+        }
+      ],
+      
+      "technologies": [
+        "React Native",
+        "Flutter",
+        "Swift",
+        "Kotlin",
+        "Firebase",
+        "App Store Connect",
+        "Google Play Console",
+        "TestFlight"
+      ],
+      
+      "caseStudies": [
+        {
+          "title": "Fitness Tracking App",
+          "description": "Built cross-platform fitness app with workout plans and progress tracking."
+        },
+        {
+          "title": "Food Delivery App",
+          "description": "Developed restaurant delivery app with real-time order tracking."
+        }
+      ],
+      
+      "benefits": [
+        "Access to mobile user base",
+        "Enhanced user engagement",
+        "Push notification capabilities",
+        "Device hardware integration",
+        "App store visibility"
+      ]
+    },
+    {
+      "id": 4,
+      "slug": "custom-software",
+      "number": "04",
+      "title": "Custom Software",
+      "description": "Tailored software solutions designed to streamline operations and drive business growth.",
+      "icon": "Code",
+      "features": [
+        "Enterprise Solutions",
+        "SaaS Products",
+        "Database Design",
+        "Cloud Architecture",
+        "API Development",
+        "Legacy System Migration"
+      ],
+      "detailedDescription": "We build custom software solutions that solve specific business challenges. Our approach combines deep industry knowledge with technical expertise to create systems that drive efficiency and growth.",
+      
+      "process": [
+        {
+          "step": "01",
+          "title": "Requirement Analysis",
+          "description": "Understand business processes and pain points."
+        },
+        {
+          "step": "02",
+          "title": "Solution Architecture",
+          "description": "Design system architecture and data models."
+        },
+        {
+          "step": "03",
+          "title": "Development",
+          "description": "Build modular, scalable software components."
+        },
+        {
+          "step": "04",
+          "title": "Integration",
+          "description": "Integrate with existing systems and third-party services."
+        },
+        {
+          "step": "05",
+          "title": "Training & Support",
+          "description": "Provide documentation and user training."
+        }
+      ],
+      
+      "technologies": [
+        "Python",
+        "Django",
+        "Java",
+        "Spring Boot",
+        "C#",
+        ".NET",
+        "Docker",
+        "Kubernetes",
+        "AWS",
+        "Azure"
+      ],
+      
+      "caseStudies": [
+        {
+          "title": "Inventory Management System",
+          "description": "Built custom inventory system reducing stock discrepancies by 95%."
+        },
+        {
+          "title": "CRM Platform",
+          "description": "Developed customer relationship management system for sales teams."
+        }
+      ],
+      
+      "benefits": [
+        "Tailored to specific needs",
+        "Improved operational efficiency",
+        "Competitive advantage",
+        "Scalable solutions",
+        "Full ownership of software"
+      ]
+    },
+    {
+      "id": 5,
+      "slug": "api-integration",
+      "number": "05",
+      "title": "API Integration",
+      "description": "Seamless integration of third-party services and APIs to extend functionality and connectivity.",
+      "icon": "Plug",
+      "features": [
+        "RESTful APIs",
+        "GraphQL",
+        "Payment Gateways",
+        "CRM Integration",
+        "Social Media APIs",
+        "Real-time Data Sync"
+      ],
+      "detailedDescription": "We specialize in connecting your systems with external services through secure and reliable API integrations. Our expertise ensures seamless data flow between platforms while maintaining security and performance.",
+      
+      "process": [
+        {
+          "step": "01",
+          "title": "API Analysis",
+          "description": "Review API documentation and identify integration points."
+        },
+        {
+          "step": "02",
+          "title": "Authentication Setup",
+          "description": "Implement secure authentication and authorization."
+        },
+        {
+          "step": "03",
+          "title": "Integration Development",
+          "description": "Build integration modules and data transformers."
+        },
+        {
+          "step": "04",
+          "title": "Error Handling",
+          "description": "Implement robust error handling and retry logic."
+        },
+        {
+          "step": "05",
+          "title": "Monitoring & Maintenance",
+          "description": "Set up monitoring and provide ongoing support."
+        }
+      ],
+      
+      "technologies": [
+        "Postman",
+        "Swagger",
+        "OAuth 2.0",
+        "JWT",
+        "Webhooks",
+        "WebSockets",
+        "Stripe API",
+        "Twilio API",
+        "Google APIs"
+      ],
+      
+      "caseStudies": [
+        {
+          "title": "Payment Gateway Integration",
+          "description": "Integrated multiple payment processors for global e-commerce."
+        },
+        {
+          "title": "Shipping API Integration",
+          "description": "Connected e-commerce platform with major shipping carriers."
+        }
+      ],
+      
+      "benefits": [
+        "Extended functionality",
+        "Automated workflows",
+        "Real-time data access",
+        "Reduced manual work",
+        "Enhanced user experience"
+      ]
+    },
+    {
+      "id": 6,
+      "slug": "cloud-services",
+      "number": "06",
+      "title": "Cloud Services",
+      "description": "Scalable and secure cloud solutions to deploy, manage, and optimize your digital infrastructure.",
+      "icon": "Cloud",
+      "features": [
+        "Cloud Deployment & Migration",
+        "AWS / Azure / GCP",
+        "CI/CD Pipelines",
+        "Scalability & Monitoring",
+        "Disaster Recovery",
+        "Cost Optimization"
+      ],
+      "detailedDescription": "We help businesses leverage cloud computing to build scalable, secure, and cost-effective digital infrastructure. Our cloud services ensure your applications run smoothly and can scale to meet demand.",
+      
+      "process": [
+        {
+          "step": "01",
+          "title": "Cloud Strategy",
+          "description": "Assess current infrastructure and define cloud strategy."
+        },
+        {
+          "step": "02",
+          "title": "Migration Planning",
+          "description": "Plan migration approach and minimize downtime."
+        },
+        {
+          "step": "03",
+          "title": "Implementation",
+          "description": "Deploy applications and configure cloud services."
+        },
+        {
+          "step": "04",
+          "title": "Optimization",
+          "description": "Monitor performance and optimize costs."
+        },
+        {
+          "step": "05",
+          "title": "Security & Compliance",
+          "description": "Implement security measures and ensure compliance."
+        }
+      ],
+      
+      "technologies": [
+        "Amazon Web Services",
+        "Microsoft Azure",
+        "Google Cloud Platform",
+        "Docker",
+        "Kubernetes",
+        "Terraform",
+        "Jenkins",
+        "Prometheus",
+        "Grafana"
+      ],
+      
+      "caseStudies": [
+        {
+          "title": "E-commerce Platform Migration",
+          "description": "Migrated legacy system to AWS, reducing costs by 40%."
+        },
+        {
+          "title": "High-Traffic App Scaling",
+          "description": "Scaled application to handle 1M+ concurrent users."
+        }
+      ],
+      
+      "benefits": [
+        "Reduced infrastructure costs",
+        "Automatic scaling",
+        "High availability",
+        "Disaster recovery",
+        "Global deployment"
+      ]
+    },
+    {
+      "id": 7,
+      "slug": "maintenance-support",
+      "number": "07",
+      "title": "Maintenance & Support",
+      "description": "Ongoing support and maintenance to keep your digital products running smoothly and securely.",
+      "icon": "Wrench",
+      "features": [
+        "24/7 Monitoring",
+        "Security Updates",
+        "Performance Tuning",
+        "Technical Support",
+        "Bug Fixes",
+        "Feature Updates"
+      ],
+      "detailedDescription": "We provide comprehensive maintenance and support services to ensure your digital products remain secure, up-to-date, and performant. Our proactive approach prevents issues before they affect your users.",
+      
+      "process": [
+        {
+          "step": "01",
+          "title": "Health Assessment",
+          "description": "Regular system audits and performance reviews."
+        },
+        {
+          "step": "02",
+          "title": "Proactive Monitoring",
+          "description": "24/7 monitoring and alert systems."
+        },
+        {
+          "step": "03",
+          "title": "Regular Updates",
+          "description": "Apply security patches and dependency updates."
+        },
+        {
+          "step": "04",
+          "title": "Performance Optimization",
+          "description": "Continuously optimize for speed and efficiency."
+        },
+        {
+          "step": "05",
+          "title": "Support & Training",
+          "description": "Provide technical support and user training."
+        }
+      ],
+      
+      "technologies": [
+        "Sentry",
+        "New Relic",
+        "Datadog",
+        "PagerDuty",
+        "Slack",
+        "Jira",
+        "Confluence",
+        "GitHub Actions"
+      ],
+      
+      "caseStudies": [
+        {
+          "title": "E-commerce Platform Support",
+          "description": "Managed maintenance for high-traffic e-commerce site."
+        },
+        {
+          "title": "SaaS Application Maintenance",
+          "description": "Provided ongoing support for B2B SaaS platform."
+        }
+      ],
+      
+      "benefits": [
+        "Reduced downtime",
+        "Improved security",
+        "Better performance",
+        "Peace of mind",
+        "Cost-effective updates"
+      ]
+    }
+  ]
+}

@@ -2,123 +2,386 @@
   "projects": [
     {
       "id": 1,
-      "title": "Fintech Dashboard",
+      "title": "GRAPITS – Luxury Wall Texture Brand Website",
       "category": "Web Development",
       "year": "2024",
       "size": "large",
-      "description": "A comprehensive financial analytics platform with real-time data visualization.",
-      "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
-      "tags": ["React", "TypeScript", "Chart.js", "Node.js", "PostgreSQL"]
+      "description": "Premium brand website showcasing luxury wall textures with smooth animations and refined brand experience.",
+      "image": "../../public/grapits01.jpg",
+      "images": [
+        "../../public/Grapits.jpeg",
+        "../../public/grapits03.png",
+        "../../public/grapits02.png",
+        "../../public/grapits04.png"
+      ],
+      "liveUrl": "https://grapits.com",
+    
+      "duration": "2 months",
+      "teamSize": "3 people",
+      "role": "Frontend Lead & UI/UX Developer",
+      
+      "problem": "Luxury brand needed a premium website that could showcase their wall textures with visual storytelling, smooth animations, and a refined user experience to stand out in the competitive market.",
+      "solution": "Developed a React-based website with GSAP animations, responsive design, and a component-based architecture that emphasizes visual storytelling and brand identity.",
+      
+      "features": [
+        {
+          "title": "Brand-Focused UI",
+          "description": "Clean, premium design with luxury brand identity and visual storytelling"
+        },
+        {
+          "title": "Smooth Animations",
+          "description": "Scroll-based and interactive animations using GSAP and Framer Motion"
+        },
+        {
+          "title": "Responsive Design",
+          "description": "Optimized for desktop, tablet, and mobile with consistent experience"
+        },
+        {
+          "title": "Component-Based Architecture",
+          "description": "Scalable and reusable React components for easy maintenance"
+        },
+        {
+          "title": "High Performance",
+          "description": "Optimized assets and efficient rendering for fast load times"
+        },
+        {
+          "title": "SEO-Friendly Pages",
+          "description": "Structured layouts and metadata for better search engine visibility"
+        }
+      ],
+      
+      "technologies": [
+        "React.js",
+        "Tailwind CSS",
+        "GSAP",
+        "Framer Motion",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "Vercel",
+        "Git/GitHub"
+      ],
+      
+      "tags": ["React", "GSAP", "Luxury Brand", "UI/UX", "Web Development", "Client Project"],
+      
+      "achievements": [
+        "Lead frontend development and UI/UX implementation for luxury brand",
+        "Designed responsive layouts aligned with premium brand identity",
+        "Implemented smooth animations enhancing user engagement",
+        "Converted high-fidelity designs into reusable React components",
+        "Collaborated on REST API development for scalable content handling"
+      ],
+      
+      "metrics": {
+        "pageLoadTime": "< 2s",
+        "mobilePerformance": "95/100",
+        "seoScore": "92/100",
+        "bounceRate": "35%"
+      }
     },
     {
       "id": 2,
-      "title": "E-Commerce Platform",
-      "category": "Full Stack",
+      "title": "Quiz24 – Anti-Cheating Quiz App",
+      "category": "Mobile Development",
+      "year": "2024",
+      "size": "large",
+      "description": "Android quiz application with anti-cheating mechanisms, real-time scoring, and intelligent quiz management system.",
+      "image": "../../public/Quiz1.jpg",
+      "images": [
+        "../../public/Quiz1.jpg",
+        "../../public/Quiz2.jpg"
+      ],
+      
+      "duration": "3 months",
+      "teamSize": "1 person (Solo Project)",
+      "role": "Full Stack Mobile Developer",
+      
+      "problem": "Traditional quiz apps lacked anti-cheating mechanisms, fair question randomization, and real-time scoring systems, making them unreliable for serious knowledge testing.",
+      "solution": "Developed an Android-native quiz application with advanced anti-cheat features, real-time scoring, randomized questions/options, and Firebase integration for a seamless user experience.",
+      
+      "features": [
+        {
+          "title": "Quiz Creation & Management",
+          "description": "Create quizzes with topics, questions, options, and customizable timers"
+        },
+        {
+          "title": "Anti-Cheat Mechanisms",
+          "description": "Randomized questions and options, time constraints, and abuse prevention"
+        },
+        {
+          "title": "Real-Time Scoring",
+          "description": "Instant score calculation with detailed feedback and performance analytics"
+        },
+        {
+          "title": "Timer-Based Quizzes",
+          "description": "Enforced time limits per quiz and individual questions"
+        },
+        {
+          "title": "Search & Discover",
+          "description": "Find quizzes by interest, keyword, or category"
+        },
+        {
+          "title": "User Profiles",
+          "description": "Personalized quiz recommendations based on interests"
+        }
+      ],
+      
+      "technologies": [
+        "Android Studio",
+        "Java",
+        "XML",
+        "Firebase Realtime Database",
+        "Firebase Authentication",
+        "Firebase Cloud Messaging",
+        "Material Design"
+      ],
+      
+      "tags": ["Android", "Quiz App", "Anti-Cheating", "Firebase", "Mobile", "Education"],
+      
+      "achievements": [
+        "Revolutionized traditional test-taking with cutting-edge technology",
+        "Built complete UI/UX and frontend architecture",
+        "Integrated Firebase backend services end-to-end",
+        "Implemented real-time scoring and notifications",
+        "Currently capable of developing end-to-end Android applications"
+      ],
+      
+      "metrics": {
+        "antiCheatEffectiveness": "95%",
+        "quizCompletionRate": "89%",
+        "userSatisfaction": "4.7/5.0",
+        "responseTime": "< 1 second"
+      }
+    },
+     {
+      "id": 3,
+      "title": "Bhajan Bank – Devotional Activity Tracking App",
+      "category": "Web Development",
       "year": "2024",
       "size": "small",
-      "description": "Modern shopping experience with seamless checkout and inventory management.",
-      "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
-      "tags": ["Next.js", "Stripe", "MongoDB", "Tailwind", "Redux"]
-    },
-    {
-      "id": 3,
-      "title": "Health & Wellness App",
-      "category": "Mobile Development",
-      "year": "2023",
-      "size": "small",
-      "description": "iOS and Android app for tracking fitness goals and mental wellness.",
-      "image": "https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
-      "tags": ["React Native", "Firebase", "Redux", "HealthKit", "Figma"]
+      "description": "Web application for tracking daily devotional activities with gamification and structured logging.",
+      "image": "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
+      ],
+      "liveUrl": "https://bhajan-bank1.vercel.app",
+      "duration": "1.5 months",
+      "teamSize": "1 person (Solo Project)",
+      "role": "Full Stack Developer",
+      
+      "problem": "Lack of structured platform for tracking daily devotional activities with motivation and consistency features for spiritual practitioners.",
+      "solution": "Built a React-based web application with gamification, activity tracking, and a clean UI that encourages consistent devotional practice through points and rewards.",
+      
+      "features": [
+        {
+          "title": "Daily Bhajan Logging",
+          "description": "Easy tracking of devotional activities with structured logging"
+        },
+        {
+          "title": "Gamification System",
+          "description": "Points and rewards system to encourage consistency in practice"
+        },
+        {
+          "title": "Clean & Minimal UI",
+          "description": "Simple, distraction-free design focused on spiritual practice"
+        },
+        {
+          "title": "User Dashboard",
+          "description": "Comprehensive view of daily and historical activity logs"
+        },
+        {
+          "title": "Secure Backend",
+          "description": "API-driven data handling with proper authentication"
+        },
+        {
+          "title": "Progress Tracking",
+          "description": "Visual progress indicators and achievement badges"
+        }
+      ],
+      
+      "technologies": [
+        "React.js",
+        "Tailwind CSS",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "JWT Authentication",
+        "Vercel",
+        "Git/GitHub"
+      ],
+      
+      "tags": ["React", "Devotional", "Gamification", "Full Stack", "Web App", "Solo Project"],
+      
+      "achievements": [
+        "Designed complete UI/UX for spiritual application",
+        "Developed full-stack solution from frontend to backend",
+        "Implemented gamification logic with points and rewards system",
+        "Built RESTful APIs for activity logging and user management",
+        "Managed database design and cloud deployment"
+      ],
+      
+      "metrics": {
+        "userRetention": "78%",
+        "dailyActiveUsers": "65%",
+        "appPerformance": "98/100",
+        "featureAdoption": "82%"
+      }
     },
     {
       "id": 4,
-      "title": "Corporate Website Redesign",
-      "category": "UI/UX Design",
+      "title": "Diosa – Smart IoT-Enabled Application",
+      "category": "Mobile Development",
       "year": "2024",
       "size": "large",
-      "description": "Complete brand overhaul and website redesign for a Fortune 500 company.",
-      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
-      "tags": ["Figma", "Adobe XD", "Webflow", "SEO", "Branding"]
-    },
+      "description": "Cross-platform IoT mobile application with ESP32 integration for real-time location tracking and device monitoring.",
+      "image": "../../public/Diosa.jpg",
+      "images": [
+        "../../public/Diosa.jpg",
+        "../../public/Diosa1.jpeg",
+        "../../public/Diosa2.jpeg"
+      ],
+      "duration": "4 months",
+      "teamSize": "2 people",
+      "role": "Full Stack Mobile & IoT Developer",
+      
+      "problem": "Lack of integrated solutions bridging mobile applications with IoT hardware for real-time monitoring and control applications.",
+      "solution": "Developed a Flutter-based cross-platform application integrated with ESP32 IoT hardware and GPS module for real-time tracking and device management.",
+      
+      "features": [
+        {
+          "title": "Real-Time GPS Tracking",
+          "description": "Live location tracking using ESP32 GPS module integration"
+        },
+        {
+          "title": "IoT Device Control",
+          "description": "Remote control of ESP32-based hardware systems"
+        },
+        {
+          "title": "Cross-Platform",
+          "description": "Works on both Android and iOS using Flutter"
+        },
+        {
+          "title": "Real-Time Data Sync",
+          "description": "Instant data synchronization with Firebase backend"
+        },
+        {
+          "title": "Interactive Dashboard",
+          "description": "Comprehensive monitoring and control interface"
+        },
+        {
+          "title": "Hardware-Software Bridge",
+          "description": "Seamless communication between mobile app and IoT devices"
+        }
+      ],
+      
+      "technologies": [
+        "Flutter",
+        "Dart",
+        "ESP32",
+        "Arduino IDE",
+        "Firebase Realtime Database",
+        "Google Maps API",
+        "Bluetooth",
+        "GPS Module",
+        "VS Code",
+        "Git/GitHub"
+      ],
+      
+      "tags": ["Flutter", "IoT", "ESP32", "Cross-Platform", "GPS Tracking", "Mobile"],
+      
+      "achievements": [
+        "Designed complete UI/UX and frontend architecture in Flutter",
+        "Built responsive and reusable widgets for dashboards and control panels",
+        "Integrated real-time GPS location data from ESP32 hardware",
+        "Coordinated hardware-software communication using ESP32 firmware",
+        "Progressed to delivering end-to-end solutions (frontend + backend + database + IoT)"
+      ],
+      
+      "metrics": {
+        "locationAccuracy": "±5 meters",
+        "dataSyncSpeed": "Real-time",
+        "batteryEfficiency": "Optimized",
+        "crossPlatformSupport": "Android & iOS"
+      }
+    }, 
     {
       "id": 5,
-      "title": "SaaS Analytics Tool",
-      "category": "Custom Software",
-      "year": "2023",
-      "size": "small",
-      "description": "Enterprise-grade analytics solution for marketing teams.",
-      "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
-      "tags": ["Python", "Django", "React", "AWS", "Docker"]
-    },
-    {
-      "id": 6,
-      "title": "Restaurant Ordering System",
-      "category": "Web Development",
-      "year": "2023",
-      "size": "small",
-      "description": "Digital ordering and management system for restaurant chains.",
-      "image": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
-      "tags": ["Vue.js", "Node.js", "MySQL", "WebSockets", "Payment Gateway"]
-    },
-    {
-      "id": 7,
-      "title": "AI Content Generator",
-      "category": "Custom Software",
-      "year": "2024",
-      "size": "large",
-      "description": "AI-powered content creation platform with natural language processing.",
-      "image": "https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
-      "tags": ["OpenAI API", "Python", "FastAPI", "React", "PostgreSQL"]
-    },
-    {
-      "id": 8,
-      "title": "Fitness Tracking Mobile App",
-      "category": "Mobile Development",
-      "year": "2023",
-      "size": "small",
-      "description": "Comprehensive fitness tracking with workout plans and nutrition guides.",
-      "image": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
-      "tags": ["Flutter", "Firebase", "Google Fit API", "Cloud Functions"]
-    },
-    {
-      "id": 9,
-      "title": "Real Estate Portal",
-      "category": "Web Development",
-      "year": "2024",
-      "size": "large",
-      "description": "Advanced property listing platform with virtual tours and AI recommendations.",
-      "image": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
-      "tags": ["Next.js", "Mapbox", "Stripe", "MongoDB", "Cloudinary"]
-    },
-    {
-      "id": 10,
-      "title": "E-Learning Platform",
+      "title": "Book'n'Play – Turf Booking System",
       "category": "Full Stack",
       "year": "2024",
       "size": "large",
-      "description": "Interactive learning platform with video courses, quizzes, and progress tracking.",
-      "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
-      "tags": ["React", "Node.js", "Video Streaming", "MongoDB", "Payment Processing"]
-    },
-    {
-      "id": 11,
-      "title": "Banking Mobile App",
-      "category": "Mobile Development",
-      "year": "2024",
-      "size": "small",
-      "description": "Secure mobile banking application with biometric authentication.",
-      "image": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
-      "tags": ["React Native", "Biometric Auth", "Banking API", "Security", "Push Notifications"]
-    },
-    {
-      "id": 12,
-      "title": "Portfolio Website Design",
-      "category": "UI/UX Design",
-      "year": "2023",
-      "size": "small",
-      "description": "Modern portfolio website for a creative agency with interactive animations.",
-      "image": "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
-      "tags": ["Figma", "GSAP", "Responsive Design", "Accessibility", "Performance"]
+      "description": "Full-stack turf booking platform for seamless sports slot management with role-based dashboards.",
+      "image": "https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
+      ],
+      "liveUrl": "https://turf-sport-4b8d.vercel.app",
+      "duration": "2.5 months",
+      "teamSize": "2 people",
+      "role": "Full Stack Developer",
+      
+      "problem": "Sports facilities lacked efficient digital systems for managing turf bookings, availability, and payments, leading to scheduling conflicts and manual management overhead.",
+      "solution": "Developed a comprehensive full-stack booking platform with real-time availability, role-based access, and payment tracking for turf owners and users.",
+      
+      "features": [
+        {
+          "title": "Turf Slot Booking",
+          "description": "Real-time availability checking and seamless booking system"
+        },
+        {
+          "title": "Date & Time Validation",
+          "description": "Prevents double booking and scheduling conflicts automatically"
+        },
+        {
+          "title": "Role-Based Access",
+          "description": "Separate dashboards for Admin, Turf Owners, and Users"
+        },
+        {
+          "title": "Secure Authentication",
+          "description": "JWT-based login system with proper authorization"
+        },
+        {
+          "title": "Payment Tracking",
+          "description": "Integrated payment status management for bookings"
+        },
+        {
+          "title": "Booking Management",
+          "description": "View, modify, and cancel bookings with real-time updates"
+        }
+      ],
+      
+      "technologies": [
+        "React.js",
+        "Tailwind CSS",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "JWT Authentication",
+        "REST API",
+        "Vercel",
+        "Git/GitHub"
+      ],
+      
+      "tags": ["React", "Booking System", "Full Stack", "Sports", "SaaS", "Web App"],
+      
+      "achievements": [
+        "Designed and developed complete frontend UI with role-based dashboards",
+        "Built backend APIs for booking management and slot validation",
+        "Implemented real-time booking validation to prevent conflicts",
+        "Integrated secure authentication and authorization system",
+        "Designed database schemas for users, bookings, and payments"
+      ],
+      
+      "metrics": {
+        "bookingSuccessRate": "96%",
+        "systemUptime": "99.8%",
+        "userSatisfaction": "4.5/5.0",
+        "bookingConflicts": "< 1%"
+      }
     }
   ]
 }

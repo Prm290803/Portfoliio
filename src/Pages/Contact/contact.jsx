@@ -32,24 +32,6 @@ const Contact = () => {
         { y: 0, opacity: 1, stagger: 0.1, duration: 1.2, ease: 'power4.out', delay: 0.3 }
       );
 
-      gsap.fromTo(
-        '.hero-subtitle',
-        { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1, ease: 'power3.out', delay: 1 }
-      );
-
-      gsap.fromTo(
-        '.hero-cta',
-        { y: 30, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', delay: 1.2 }
-      );
-
-      gsap.fromTo(
-        '.hero-scroll',
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', delay: 1.4 }
-      );
-
       // Services scroll animation
       gsap.utils.toArray('.service-item').forEach((item, i) => {
         gsap.fromTo(
@@ -93,11 +75,7 @@ const Contact = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo(
-        '.contact-title',
-        { y: 100, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1.2, ease: 'power4.out', delay: 0.3 }
-      );
+     
 
       gsap.fromTo(
         '.contact-form > *',
@@ -179,7 +157,7 @@ const Contact = () => {
   return (
     <Layout>
       <PageTransition>
-      <div ref={containerRef}>
+      <div>
         {/* Hero */}
         <section className="min-h-[50vh] flex items-end pb-20 pt-40" ref={heroRef}>
           <div className="container mx-auto px-6 md:px-12">

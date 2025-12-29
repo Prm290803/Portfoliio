@@ -19,25 +19,6 @@ const About = () => {
         { y: 200, opacity: 0 },
         { y: 0, opacity: 1, stagger: 0.1, duration: 1.2, ease: 'power4.out', delay: 0.3 }
       );
-
-      gsap.fromTo(
-        '.hero-subtitle',
-        { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1, ease: 'power3.out', delay: 1 }
-      );
-
-      gsap.fromTo(
-        '.hero-cta',
-        { y: 30, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', delay: 1.2 }
-      );
-
-      gsap.fromTo(
-        '.hero-scroll',
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', delay: 1.4 }
-      );
-
       // Services scroll animation
       gsap.utils.toArray('.service-item').forEach((item, i) => {
         gsap.fromTo(
@@ -81,11 +62,7 @@ const About = () => {
 
     useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo(
-        '.about-title',
-        { y: 100, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1.2, ease: 'power4.out', delay: 0.3 }
-      );
+      
 
       gsap.fromTo(
         '.about-content > *',
@@ -103,21 +80,6 @@ const About = () => {
         }
       );
 
-      gsap.fromTo(
-        '.value-item',
-        { x: -50, opacity: 0 },
-        {
-          x: 0,
-          opacity: 1,
-          stagger: 0.1,
-          duration: 0.8,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: '.values-section',
-            start: 'top 80%',
-          },
-        }
-      );
     }, containerRef);
 
     return () => ctx.revert();
@@ -133,7 +95,7 @@ const About = () => {
   return (
     <Layout>
       <PageTransition>
-      <div ref={containerRef}>
+      <div  >
         {/* Hero */}
 
         <section className="min-h-[70vh] pb-20 pt-32" ref={heroRef}>

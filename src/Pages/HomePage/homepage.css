@@ -48,6 +48,23 @@
     color: rgba(var(--background), 1);
   }
 }
+/* 3D Transform Utilities */
+ .perspective-1000 {
+    perspective: 1000px;
+  }
+  .transform-style-preserve-3d {
+    transform-style: preserve-3d;
+  }
+  .translate-z-\[-20px\] {
+    transform: translateZ(-20px);
+  }
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
 
 @layer components {
   /* Editorial Typography */

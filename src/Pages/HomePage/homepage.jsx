@@ -123,7 +123,7 @@ const Home = () => {
         </div>
             </div>
               {/* Main headline */}
-            <div className="hero-title overflow-hidden top-100 md:top-30 lg:top-1/2" >
+            <div className="hero-title hero-scroll overflow-hidden top-100 md:top-30 lg:top-1/2" >
             <h1 className="headline-xl">
                 <span className="block overflow-hidden">
                 <span className="block">
@@ -213,7 +213,7 @@ const Home = () => {
         {/* Marquee */}
         <section className="py-8 border-y border-2 border-black/10 border-foreground/10 overflow-hidden" >
           <div ref={marqueeRef} className="flex whitespace-nowrap animate-marquee">
-            {[...Array(4)].map((_, i) => (
+            {[...Array(5)].map((_, i) => (
               <span key={i} className="text-4xl md:text-5xl font-black text-black/40 uppercase tracking-tight mx-8 text-foreground/10">
                 Web Development • UI/UX Design • Mobile Apps • Custom Software • API Integration •
               </span>

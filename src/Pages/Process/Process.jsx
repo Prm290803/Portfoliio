@@ -60,24 +60,7 @@ const Process = () => {
   
   const ctx = gsap.context(() => {
     // Hero title animation
-    gsap.fromTo(
-      '.process-title',
-      { y: 100, opacity: 0 },
-      { 
-        y: 0, 
-        opacity: 1, 
-        duration: 1.2, 
-        ease: 'power4.out', 
-        delay: 0.3,
-        scrollTrigger: {
-          trigger: '.process-title',
-          start: 'top 90%',
-          end: 'bottom 10%',
-          scrub: 1,
-          toggleActions: 'play none none reverse'
-        }
-      }
-    );
+  
 
     // Step items animation - in AND out
     gsap.utils.toArray('.step-item').forEach((item, i) => {
@@ -144,18 +127,6 @@ const Process = () => {
         { y: 0, opacity: 1, duration: 1, ease: 'power3.out', delay: 1.3 }
       );
 
-      gsap.fromTo(
-        '.hero-cta',
-        { y: 30, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', delay: 1.5 }
-      );
-
-      gsap.fromTo(
-        '.hero-scroll',
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', delay: 1.7 }
-      );
-
       // Services scroll animation
       gsap.utils.toArray('.service-item').forEach((item, i) => {
         gsap.fromTo(
@@ -169,7 +140,7 @@ const Process = () => {
             scrollTrigger: {
               trigger: item,
               start: 'top 85%',
-              end: 'bottom 15%',
+              end: 'bottom 10%',
             },
           }
         );
@@ -203,26 +174,7 @@ const Process = () => {
         <PageTransition> 
       <div ref={containerRef}>
         {/* Hero */}
-        {/* <section className="min-h-[70vh] flex items-end pb-20 pt-40">
-          <div className="container mx-auto px-6 md:px-12">
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-              <div className="md:col-span-8">
-                <span className="block text-sm md:text-base uppercase tracking-widest text-gray-500 mb-4">
-                  How We Work
-                </span>
-                <h1 className="process-title text-5xl md:text-7xl lg:text-8xl font-bold leading-tight">
-                  Our<br />Process
-                </h1>
-              </div>
-              <div className="md:col-span-4 flex items-end">
-                <p className="text-base md:text-lg text-gray-600 max-w-md">
-                  A proven methodology that transforms ideas into exceptional digital products.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section> */}
-        <section className="min-h-[70vh] pb-20 pt-32 relative" ref={heroRef}>
+        <section className="min-h-[70vh] pb-10 lg:pb-20 pt-32 relative" ref={heroRef}>
             <div className=" container w-screen px-6 md:px-12">
               <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
                 <div className="md:col-span-8">
@@ -254,7 +206,7 @@ const Process = () => {
                     text-sm xs:text-base text-black/50 sm:text-lg md:text-xl lg:text-xl 
                  text-left xs:text-center sm:text-center md:text-right lg:text-right 
                 leading-relaxed sm:leading-relaxed md:leading-loose lg:leading-loose">
-                A proven methodology that transforms ideas into exceptional digital products.
+                A structured approach to building reliable, scalable digital systems.
                 </p>
                 </div>
                 </div>
@@ -270,7 +222,24 @@ const Process = () => {
           </section>
            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-black/5 dark:bg-black/20" />
            
-
+{/* Simple Scroll Down Arrow */}
+<div className="flex flex-col items-center justify-center my-12 sm:my-16">
+  <p className="text-gray-500 text-sm font-medium mb-4 tracking-wider">
+    SCROLL TO EXPLORE
+  </p>
+  <div className="relative">
+     
+    {/* Arrow */}
+    <svg 
+      className="w-8 h-8 text-gray-600 mt-2 animate-bounce" 
+      fill="none" 
+      stroke="currentColor" 
+      viewBox="0 0 24 24"
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+    </svg>
+  </div>
+</div>
         {/* Process Steps */}
             <section className="process-steps py-20 md:py-32">
             <div className="container mx-auto px-6 md:px-12">
