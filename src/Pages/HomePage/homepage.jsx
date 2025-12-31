@@ -58,13 +58,18 @@ const Home = () => {
       gsap.fromTo(
         '.hero-title span',
         { y: 200, opacity: 0 },
-        { y: 0, opacity: 1, stagger: 0.1, duration: 1.2, ease: 'power4.out', delay: 0.6 }
+        { y: 0, opacity: 1, stagger: 0.1, duration: 1.2, ease: 'power4.out', delay: 0.7 }
       );
 
       gsap.fromTo(
         '.hero-subtitle',
         { y: 50, opacity: 0 },
         { y: 0, opacity: 1, duration: 1, ease: 'power3.out', delay: 1.3 }
+      );
+      gsap.fromTo(
+        '.hero-subtitle2',
+        { x: -50, opacity: 0 },
+        { x: 0, opacity: 1, duration: 1, ease: 'power3.out', delay: 1.3 }
       );
 
       gsap.fromTo(
@@ -134,7 +139,7 @@ const Home = () => {
               {/* Vertical label */}
              <div className="absolute  md:left-8 top-1/3 sm:top-1/2 md:top-5 -translate-y-1/2 lg:block md:hidden sm:hidden">
             <div className="relative lg:left-8 right-20 top-50 -translate-y-1/2 md:block  sm:hidden">
-          <span className="label-vertical text-foreground/80 tracking-[0.4em] font-medium">
+          <span className="label-vertical hero-subtitle2 text-foreground/80 tracking-[0.4em] font-medium">
             Digital Studio — Est. 2024
           </span>
         </div>
