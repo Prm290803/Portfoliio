@@ -34,8 +34,9 @@ const Home = () => {
   const [projects, setProjects] = useState([]);
  useEffect(() => {
   // Access the projects array from the imported data
-  console.log('ProjectData structure:', ProjectData);
-  console.log('Projects array:', ProjectData.projects);
+  
+      // console.log('ProjectData structure:', ProjectData);
+      // console.log('Projects array:', ProjectData.projects);
   
   if (ProjectData && ProjectData.projects && Array.isArray(ProjectData.projects)) {
     // Get all projects and limit to 3
