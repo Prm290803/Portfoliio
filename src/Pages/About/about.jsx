@@ -157,7 +157,7 @@ const About = () => {
               {/* Main Text */}
               <div className="md:col-span-6">
                 <p className="text-2xl md:text-3xl font-light leading-relaxed mb-8">
-                  BuildCrew Studio was founded on a simple belief: technology should be beautiful, 
+                  BuildCrew was founded on a simple belief: technology should be beautiful, 
                   functional, and accessible.
                 </p>
                 <p className="body-editorial text-muted-foreground mb-6">

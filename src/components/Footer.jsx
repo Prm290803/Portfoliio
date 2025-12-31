@@ -44,7 +44,7 @@ export const Footer = () => {
     { name: 'Services', path: '/services' },
     { name: 'Work', path: '/work' },
     { name: 'Process', path: '/process' },
-    { name: 'Team', path: '/team' },
+    // { name: 'Team', path: '/team' },
     { name: 'Contact', path: '/contact' }
   ];
 
