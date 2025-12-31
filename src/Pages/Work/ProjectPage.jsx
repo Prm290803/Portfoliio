@@ -39,6 +39,7 @@ import {
 import { Layout } from '../../components/Layout';
 import PageTransition from '../../components/PageTransition';
 import projectData from '../../Data/Project.json';
+import Portal from '../../components/Portal';
 
 const ProjectPage = () => {
   const { id } = useParams();
@@ -285,22 +286,22 @@ const ProjectPage = () => {
       );
 
       // Metrics animation
-      gsap.fromTo(
-        '.metric-item',
-        { scale: 0.9, opacity: 0 },
-        {
-          scale: 1,
-          opacity: 1,
-          stagger: 0.1,
-          duration: 0.8,
-          ease: 'back.out(1.7)',
-          scrollTrigger: {
-            trigger: '.metrics-section',
-            start: 'top 85%',
-            toggleActions: 'play none none none'
-          }
-        }
-      );
+      // gsap.fromTo(
+      //   '.metric-item',
+      //   { scale: 0.9, opacity: 0 },
+      //   {
+      //     scale: 1,
+      //     opacity: 1,
+      //     stagger: 0.1,
+      //     duration: 0.8,
+      //     ease: 'back.out(1.7)',
+      //     scrollTrigger: {
+      //       trigger: '.metrics-section',
+      //       start: 'top 85%',
+      //       toggleActions: 'play none none none'
+      //     }
+      //   }
+      // );
 
     }, containerRef);
 
@@ -559,7 +560,7 @@ const ProjectPage = () => {
 
           {/* Hero Image with Gallery Controls */}
           {project.images && project.images.length > 0 && (
-            <section className="px-6 md:px-12 mb-20 md:mb-32">
+            <section className="gallery-section px-6 md:px-12 mb-20 md:mb-32">
               <div className="container mx-auto">
                 <div className="project-hero-image relative rounded-2xl overflow-hidden shadow-2xl group">
                   <img 
@@ -599,7 +600,7 @@ const ProjectPage = () => {
                           e.stopPropagation();
                           setIsLightboxOpen(true);
                         }}
-                        className="absolute top-4 right-4 w-10 h-10 bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-black/70 transition-all duration-300"
+                        className="absolute top-4 right-4 w-10 h-10 backdrop-blur-sm rounded-full flex items-center bg-black/20 justify-center text-white hover:bg-black/70 transition-all duration-300"
                       >
                         <Maximize2 className="w-5 h-5" />
                       </button>
@@ -614,7 +615,7 @@ const ProjectPage = () => {
                 
                 {/* Thumbnail Gallery */}
                 {project.images.length > 1 && (
-                  <div className="flex gap-4 mt-6 overflow-x-auto pb-4 scrollbar-hide px-2">
+                  <div className="gallery-item flex  gap-4 mt-6 overflow-x-auto pb-4 scrollbar-hide px-2">
                     {project.images.map((img, index) => (
                       <button
                         key={index}
@@ -622,7 +623,7 @@ const ProjectPage = () => {
                         className={`flex-shrink-0 w-20 h-20 md:w-24 md:h-24 rounded-lg overflow-hidden border-2 transition-all duration-300 ${
                           selectedImageIndex === index 
                             ? 'border-black scale-105 shadow-lg' 
-                            : 'border-transparent hover:border-gray-300'
+                            : 'border-transparent '
                         }`}
                       >
                         <img 
@@ -699,19 +700,19 @@ const ProjectPage = () => {
 
             {/* Tech Stack */}
             {project.technologies && project.technologies.length > 0 && (
-              <section className="tech-section mb-20 md:mb-32">
+              <section className="tech-section  mb-20 md:mb-32">
                 <div className="flex items-center gap-3 mb-12">
                   <div className="p-2 bg-white rounded-lg">
                     <Code className="w-5 h-5 text-black" />
                   </div>
-                  <h2 className="section-title text-2xl md:text-3xl font-bold">Technology Stack</h2>
+                  <h2 className="section-title  text-2xl md:text-3xl font-bold">Technology Stack</h2>
                 </div>
                 
-                <div className="flex flex-wrap gap-3">
+                <div className="flex tech-stack-grid flex-wrap gap-3">
                   {project.technologies.map((tech, index) => (
                     <div 
                       key={index}
-                      className="tech-item flex items-center gap-2 px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg hover:border-gray-300 transition-all duration-200"
+                      className="tech-item tech-stack-item flex items-center gap-2 px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg hover:border-gray-300 transition-all duration-200"
                     >
                       {getIconForTech(tech)}
                       <span className="text-sm font-medium">{tech}</span>
@@ -724,17 +725,17 @@ const ProjectPage = () => {
 
             {/* Achievements - Elegant */}
             {project.achievements && project.achievements.length > 0 && (
-              <section className="mb-20 md:mb-32">
+              <section className=" mb-20 md:mb-32">
                 <div className="flex items-center gap-3 mb-12">
                   <div className="p-2 bg-white rounded-lg">
                     <Award className="w-5 h-5" />
                   </div>
-                  <h2 className="section-title text-2xl md:text-3xl font-bold">Key Achievements</h2>
+                  <h2 className="section-title achievements-section text-2xl md:text-3xl font-bold">Key Achievements</h2>
                 </div>
                 
                 <div className="space-y-4">
                   {project.achievements.map((achievement, index) => (
-                    <div key={index} className="content-card flex items-start gap-4 p-4 border border-gray-100 rounded-xl">
+                    <div key={index} className="achievement-item content-card flex items-start gap-4 p-4 border border-gray-100 rounded-xl">
                       <div className="flex-shrink-0 w-6 h-6  rounded-full flex items-center justify-center mt-0.5">
                         <div className="w-2 h-2 bg-black rounded-full"></div>
                       </div>
@@ -870,10 +871,11 @@ const ProjectPage = () => {
 
           {/* Lightbox Modal */}
           {isLightboxOpen && project.images && (
-            <div className="fixed inset-0 z-[9999] bg-black/95 flex items-center justify-center p-4">
+            <Portal>
+            <div className="fixed inset-0 z-[999999] bg-black/95 flex items-center justify-center p-4">
               <button
                 onClick={() => setIsLightboxOpen(false)}
-                className="absolute top-25 right-6 text-white hover:text-gray-300 transition-colors z-10"
+                className="absolute top-25 right-6 text-white hover:text-gray-300 transition-colors z-[99999]"
               >
                 <X className="w-8 h-8" />
               </button>
@@ -909,6 +911,7 @@ const ProjectPage = () => {
                 Use ← → arrows or swipe to navigate • ESC to close
               </div>
             </div>
+            </Portal>
           )}
         </div>
       </PageTransition>

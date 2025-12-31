@@ -244,7 +244,7 @@ const Work = () => {
         </div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols- md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols- md:grid-cols-3 lg:grid-cols-2 gap-8">
           {visibleProjects.map((project) => (
             <div
               key={project.id}

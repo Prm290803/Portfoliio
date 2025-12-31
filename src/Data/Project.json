@@ -7,12 +7,12 @@
       "year": "2024",
       "size": "large",
       "description": "Premium brand website showcasing luxury wall textures with smooth animations and refined brand experience.",
-      "image": "../../public/grapits01.jpg",
+      "image": "https://res.cloudinary.com/dq85wnwj3/image/upload/v1767157698/Facebook_Cover_-_Interior_Styling_zi9tad.jpg",
       "images": [
-        "../../public/Grapits.jpeg",
-        "../../public/grapits03.png",
-        "../../public/grapits02.png",
-        "../../public/grapits04.png"
+        "https://res.cloudinary.com/dq85wnwj3/image/upload/v1767157698/Facebook_Cover_-_Interior_Styling_zi9tad.jpg",
+        "https://res.cloudinary.com/dq85wnwj3/image/upload/v1767157940/grapits03_eltot9.png",
+        "https://res.cloudinary.com/dq85wnwj3/image/upload/v1767157941/grapits02_tfhxuz.png",
+        "https://res.cloudinary.com/dq85wnwj3/image/upload/v1767157942/grapits04_ny7p3d.png"
       ],
       "liveUrl": "https://grapits.com",
     
@@ -86,10 +86,10 @@
       "year": "2024",
       "size": "large",
       "description": "Android quiz application with anti-cheating mechanisms, real-time scoring, and intelligent quiz management system.",
-      "image": "../../public/Quiz1.jpg",
+      "image": "https://res.cloudinary.com/dq85wnwj3/image/upload/v1767158018/1_h0enk8.jpg",
       "images": [
-        "../../public/Quiz1.jpg",
-        "../../public/Quiz2.jpg"
+        "https://res.cloudinary.com/dq85wnwj3/image/upload/v1767158018/1_h0enk8.jpg",
+        "https://res.cloudinary.com/dq85wnwj3/image/upload/v1767158019/3_jx8vxu.jpg"
       ],
       
       "duration": "3 months",
@@ -160,11 +160,13 @@
       "year": "2024",
       "size": "small",
       "description": "Web application for tracking daily devotional activities with gamification and structured logging.",
-      "image": "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+      "image": "https://res.cloudinary.com/dq85wnwj3/image/upload/v1767158679/Screenshot_2025-12-31_105257_t94hru.png",
       "images": [
-        "https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
-        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
+        "https://res.cloudinary.com/dq85wnwj3/image/upload/v1767158679/Screenshot_2025-12-31_105257_t94hru.png",
+        "https://res.cloudinary.com/dq85wnwj3/image/upload/v1767158681/Screenshot_2025-12-31_105305_evz0jh.png",
+        "https://res.cloudinary.com/dq85wnwj3/image/upload/v1767158681/Screenshot_2025-12-31_105354_pdjdkj.png",
+        "https://res.cloudinary.com/dq85wnwj3/image/upload/v1767158683/Screenshot_2025-12-31_105406_z2o4i1.png",
+        "https://res.cloudinary.com/dq85wnwj3/image/upload/v1767158682/Screenshot_2025-12-31_105359_pkddba.png"
       ],
       "liveUrl": "https://bhajan-bank1.vercel.app",
       "duration": "1.5 months",
@@ -236,11 +238,11 @@
       "year": "2024",
       "size": "large",
       "description": "Cross-platform IoT mobile application with ESP32 integration for real-time location tracking and device monitoring.",
-      "image": "../../public/Diosa.jpg",
+      "image": "https://res.cloudinary.com/dq85wnwj3/image/upload/v1767157698/Brand_Guidelines_Presentation_n8klrr.jpg",
       "images": [
-        "../../public/Diosa.jpg",
-        "../../public/Diosa1.jpeg",
-        "../../public/Diosa2.jpeg"
+        "https://res.cloudinary.com/dq85wnwj3/image/upload/v1767157698/Brand_Guidelines_Presentation_n8klrr.jpg",
+        "https://res.cloudinary.com/dq85wnwj3/image/upload/v1767157699/Diosa1_wcwaqs.jpg",
+        "https://res.cloudinary.com/dq85wnwj3/image/upload/v1767157698/Diosa2_x8eh5o.jpg"
       ],
       "duration": "4 months",
       "teamSize": "2 people",

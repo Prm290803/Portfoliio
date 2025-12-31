@@ -164,8 +164,8 @@ const ServiceDetail = () => {
           </div>
 
           {/* Service Badge */}
-          <div className="fixed top-6 right-6 z-50">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 text-sm font-medium">
+          <div className="absolute top-26 right-6 z-50">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-black backdrop-blur-sm border text-white border-gray-200 md:hidden rounded-full text-sm font-medium">
               <IconComponent className="w-4 h-4" />
               <span>{service.title}</span>
             </div>
@@ -216,10 +216,10 @@ const ServiceDetail = () => {
                   Key Features
                 </h2>
                 
-                <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="grid sm:grid-cols-1  md:grid-cols-2 gap-8">
                   {service.features.map((feature, index) => (
-                    <div key={index} className="flex items-start gap-4 p-6 border border-gray-200 hover:border-gray-300 transition-all duration-200">
-                      <div className="flex-shrink-0 p-3 border border-gray-200">
+                    <div key={index} className="flex items-start gap-4 p-6 border rounded-2xl border-gray-200 hover:border-gray-300 transition-all duration-200">
+                      <div className="flex-shrink-0 p-3 border rounded-xl border-gray-200">
                         {index < 4 ? <CheckCircle className="w-5 h-5 text-black" /> : <Zap className="w-5 h-5 text-black" />}
                       </div>
                       <div>
@@ -242,7 +242,7 @@ const ServiceDetail = () => {
                 
                 <div className="space-y-8">
                   {service.process.map((step, index) => (
-                    <div key={index} className="process-step flex items-start gap-8 p-8 border border-gray-200 hover:border-gray-300 transition-all duration-200">
+                    <div key={index} className="process-step flex items-start gap-8 p-8 rounded-2xl border border-gray-200 hover:border-gray-300 transition-all duration-200">
                       <div className="flex-shrink-0">
                         <span className="text-4xl font-bold text-black opacity-20">{step.step}</span>
                       </div>
@@ -265,7 +265,7 @@ const ServiceDetail = () => {
                 
                 <div className="flex flex-wrap gap-4">
                   {service.technologies.map((tech, index) => (
-                    <div key={index} className="px-4 py-3 border border-gray-200 hover:border-gray-300 transition-all duration-200">
+                    <div key={index} className="px-4 py-3 rounded-xl border border-gray-200 hover:border-gray-300 transition-all duration-200">
                       <span className="text-sm font-medium text-black">{tech}</span>
                     </div>
                   ))}
@@ -282,7 +282,7 @@ const ServiceDetail = () => {
                 
                 <div className="grid grid-cols- md:grid-cols-2 gap-8">
                   {service.caseStudies.map((study, index) => (
-                    <div key={index} className="p-8 border border-gray-200 hover:border-gray-300 transition-all duration-200">
+                    <div key={index} className="p-8 rounded-2xl border border-gray-200 hover:border-gray-300 transition-all duration-200">
                       <h3 className="text-xl font-bold mb-4 text-black">{study.title}</h3>
                       <p className="text-gray-600">{study.description}</p>
                     </div>
@@ -300,8 +300,8 @@ const ServiceDetail = () => {
                 
                 <div className="grid grid-cols- md:grid-cols-2 gap-8">
                   {service.benefits.map((benefit, index) => (
-                    <div key={index} className="flex items-start gap-4 p-6 border border-gray-200 hover:border-gray-300 transition-all duration-200">
-                      <div className="flex-shrink-0 p-3 border border-gray-200">
+                    <div key={index} className="flex items-start gap-4 p-6 rounded-2xl border border-gray-200 hover:border-gray-300 transition-all duration-200">
+                      <div className="flex-shrink-0 p-3 border rounded-xl border-gray-200">
                         <TrendingUp className="w-5 h-5 text-black" />
                       </div>
                       <div>
@@ -337,7 +337,7 @@ const ServiceDetail = () => {
                       <div 
                         key={relatedService.id}
                         onClick={() => navigate(`/services/${relatedService.slug}`)}
-                        className="group cursor-pointer p-6 border border-gray-200 hover:border-black transition-all duration-200"
+                        className="group cursor-pointer p-6 rounded-2xl border border-gray-200 hover:border-black transition-all duration-200"
                       >
                         <div className="flex items-center gap-3 mb-4">
                           <RelatedIcon className="w-5 h-5 text-gray-500 group-hover:text-black transition-colors" />
@@ -371,13 +371,13 @@ const ServiceDetail = () => {
               <div className="flex flex-wrap justify-center gap-4">
                 <button
                   onClick={() => navigate('/contact')}
-                  className="px-8 py-4 bg-black text-white hover:bg-gray-800 transition-all duration-200 border border-black"
+                  className="px-8 py-4 rounded-xl bg-black text-white hover:bg-gray-800 transition-all duration-200 border border-black"
                 >
                   Get Started
                 </button>
                 <button
                   onClick={() => navigate('/services')}
-                  className="px-8 py-4 border border-gray-300 text-black hover:border-black hover:bg-black hover:text-white transition-all duration-200"
+                  className="px-8 py-4 rounded-xl  border border-gray-300 text-black hover:border-black hover:bg-black hover:text-white transition-all duration-200"
                 >
                   View All Services
                 </button>

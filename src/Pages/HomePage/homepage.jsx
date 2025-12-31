@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
@@ -6,14 +6,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowUpRight, ArrowDown } from 'lucide-react';
 import { Layout } from '../../components/Layout';
 import PageTransition from "../../components/PageTransition";
+import ProjectData from "../../Data/Project.json"
 import './homepage.css';
 import { useLenis } from '../../Lenis'; // adjust path
 import {Snowfall} from 'react-snowfall';
 
-// Import placeholder images
-const projectFintech = 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80';
-const projectEcommerce = 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80';
-const projectHealth = 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -24,16 +21,36 @@ const services = [
   { title: 'Custom Software', number: '04' },
 ];
 
-const projects = [
-  { title: 'Fintech Dashboard', category: 'Web Development', year: '2024', image: projectFintech },
-  { title: 'E-Commerce Platform', category: 'Full Stack', year: '2024', image: projectEcommerce },
-  { title: 'Health App', category: 'Mobile Development', year: '2023', image: projectHealth },
-];
+// const projects = [
+//   { title: 'Fintech Dashboard', category: 'Web Development', year: '2024',   },
+//   { title: 'E-Commerce Platform', category: 'Full Stack', year: '2024',  },
+//   { title: 'Health App', category: 'Mobile Development', year: '2023' },
+// ];
 
 const Home = () => {
   const heroRef = useRef(null);
   const marqueeRef = useRef(null);
   const servicesRef = useRef(null);
+  const [projects, setProjects] = useState([]);
+ useEffect(() => {
+  // Access the projects array from the imported data
+  console.log('ProjectData structure:', ProjectData);
+  console.log('Projects array:', ProjectData.projects);
+  
+  if (ProjectData && ProjectData.projects && Array.isArray(ProjectData.projects)) {
+    // Get all projects and limit to 3
+    const allProjects = ProjectData.projects;
+    const limitedProjects = allProjects.slice(0, 3);
+    setProjects(limitedProjects); // Set the limited projects
+  } else if (Array.isArray(ProjectData)) {
+    // Fallback: if data is direct array
+    const limitedProjects = ProjectData.slice(0, 3);
+    setProjects(limitedProjects);
+  } else {
+    console.error('Invalid projects data structure');
+    setProjects([]); // Set empty array instead of [limitedProjects]
+  }
+}, []);
 
   useEffect(() => {
     // Hero animation
@@ -170,30 +187,30 @@ const Home = () => {
      <div className="hero-cta mt-6 mb-20 md:mt-12">
   
   
-  <div className="grid lg:grid-cols-2 grid-1 items-center lg:justify-end lg:items-center gap-4 md:gap-6 w-full">
-    
-    <Link to="/work" className="group relative overflow-hidden w-full lg:w-auto lg:min-w-[200px]">
-      <div className="flex items-center justify-center gap-2 px-6 py-4 md:px-8 md:py-4 text-center transition-all duration-300 border-2 border-black bg-white text-black hover:bg-black hover:text-white hover:border-white lg:hover:scale-[1.02] active:scale-[0.98] w-full lg:w-auto">
-        <span className="relative z-10 uppercase tracking-wider text-sm md:text-base">
-          View our work
-        </span>
-        <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5 transition-all duration-300 lg:group-hover:translate-x-1 lg:group-hover:-translate-y-1" />
-        <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
-      </div>
-    </Link>
-    
-    <Link to="/contact" className="group relative overflow-hidden w-full lg:w-auto lg:min-w-[200px]">
-      <div className="flex items-center justify-center gap-2 px-6 py-4 md:px-8 md:py-4 text-center transition-all duration-300 border-2 border-white bg-black text-white hover:bg-white hover:text-black hover:border-black w-full lg:w-auto">
-        <span className="relative z-10 uppercase tracking-wider text-sm md:text-base">
-          Start a project
-        </span>
-        <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5 transition-all duration-300 lg:group-hover:translate-x-1 lg:group-hover:-translate-y-1" />
-        <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
-      </div>
-    </Link>
-    
-  </div>
-</div>
+                  <div className="grid lg:grid-cols-2 grid-1 items-center lg:justify-end lg:items-center gap-4 md:gap-6 w-full">
+                    
+                    <Link to="/work" className="group relative overflow-hidden w-full lg:w-auto lg:min-w-[200px]">
+                      <div className="flex items-center justify-center gap-2 px-6 py-4 md:px-8 md:py-4 text-center transition-all duration-300 border-2 border-black bg-white text-black hover:bg-black hover:text-white hover:border-white lg:hover:scale-[1.02] active:scale-[0.98] w-full lg:w-auto">
+                        <span className="relative z-10 uppercase tracking-wider text-sm md:text-base">
+                          View our work
+                        </span>
+                        <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5 transition-all duration-300 lg:group-hover:translate-x-1 lg:group-hover:-translate-y-1" />
+                        <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
+                      </div>
+                    </Link>
+                    
+                    <Link to="/contact" className="group relative overflow-hidden w-full lg:w-auto lg:min-w-[200px]">
+                      <div className="flex items-center justify-center gap-2 px-6 py-4 md:px-8 md:py-4 text-center transition-all duration-300 border-2 border-white bg-black text-white hover:bg-white hover:text-black hover:border-black w-full lg:w-auto">
+                        <span className="relative z-10 uppercase tracking-wider text-sm md:text-base">
+                          Start a project
+                        </span>
+                        <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5 transition-all duration-300 lg:group-hover:translate-x-1 lg:group-hover:-translate-y-1" />
+                        <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
+                      </div>
+                    </Link>
+                    
+                  </div>
+                </div>
             </div>
           </div>
 
@@ -285,122 +302,128 @@ const Home = () => {
       </div>
     </div>
 
-    {/* Projects Grid - Modern Card Design */}
-    <div className="grid lg:grid-cols-8 md:grid-cols-12 gap-8">
-      {projects.map((project, index) => {
-        const isFeatured = index === 0;
-        
-        return (
-          <div
-            key={index}
-            className={`
-              group relative overflow-hidden rounded-sm transition-all duration-500
-              
-              hover:shadow-sm hover:-translate-y-2 
-              ${isFeatured ? 'md:col-span-8' : 'md:col-span-4'}
-            `}
-          >
-            <Link to="/work" className="block h-full">
-              
-              {/* Image Container */}
-              <div className={`
-                relative overflow-hidden bg-gray-100 dark:bg-gray-700
-                ${isFeatured ? 'aspect-[21/10]' : 'aspect-square md:aspect-[4/5]'}
-              `}>
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent z-10"></div>
+    {/* Projects Grid - Using fetched projects data */}
+    {projects.length > 0 ? (
+      <div className="grid lg:grid-cols-8 md:grid-cols-8 gap-8">
+        {projects.map((project, index) => {
+          const isFeatured = project.size === 'large' || index === 0;
+          
+          return (
+            <div
+              key={project.id}
+              className={`
+                project-item group relative overflow-hidden rounded-sm transition-all duration-500
+                hover:shadow-sm hover:-translate-y-2 
+                ${isFeatured ? 'md:col-span-8' : 'md:col-span-4'}
+              `}
+            >
+              <Link to={`/work/${project.id}`} className="block h-full">
                 
-                {/* Project Image */}
-                <img 
-                  src={project.image} 
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                
-                {/* Featured Badge */}
-                {isFeatured && (
-                  <div className="absolute top-4 left-4 z-20">
-                    <span className="px-4 py-2 bg-primary text-white text-xs font-bold uppercase tracking-widest rounded-full">
-                      Featured
-                    </span>
-                  </div>
-                )}
-                
-                {/* Hover Overlay Content */}
-                <div className="absolute inset-0 to-transparent 
-                              opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20
-                              flex items-end p-6">
-                  <div className="text-white">
-                    <p className="text-sm font-medium mb-2">View Case Study</p>
-                    <div className="flex items-center gap-2">
-                      <div className="w-6 h-px bg-white"></div>
-                      <span className="text-xs uppercase tracking-widest">Explore</span>
+                {/* Image Container */}
+                <div className={`
+                  relative overflow-hidden bg-gray-100 dark:bg-gray-700
+                  ${isFeatured ? 'aspect-[21/10]' : 'aspect-square md:aspect-[4/5]'}
+                `}>
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent z-10"></div>
+                  
+                  {/* Project Image */}
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                  
+                  {/* Featured Badge */}
+                  {isFeatured && (
+                    <div className="absolute top-4 left-4 z-20">
+                      <span className="px-4 py-2 bg-primary text-white text-xs font-bold uppercase tracking-widest rounded-full">
+                        Featured
+                      </span>
+                    </div>
+                  )}
+                  
+                  {/* Hover Overlay Content */}
+                  <div className="absolute inset-0 to-transparent 
+                                opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20
+                                flex items-end p-6">
+                    <div className="text-white">
+                      <p className="text-sm font-medium mb-2">View Case Study</p>
+                      <div className="flex items-center gap-2">
+                        <div className="w-6 h-px bg-white"></div>
+                        <span className="text-xs uppercase tracking-widest">Explore</span>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Content Container */}
-              <div className="p-6 md:p-8">
-                {/* Category & Year */}
-                <div className="flex justify-between items-center mb-4">
-                  <span className="text-xs font-medium uppercase tracking-wider text-primary dark:text-primary-400">
-                    {project.category}
-                  </span>
-                  <span className="text-sm font-mono text-gray-500 dark:text-gray-400">
-                    {project.year}
-                  </span>
+                {/* Content Container */}
+                <div className="p-6 md:p-8">
+                  {/* Category & Year */}
+                  <div className="flex justify-between items-center mb-4">
+                    <span className="text-xs font-medium uppercase tracking-wider text-primary dark:text-primary-400">
+                      {project.category}
+                    </span>
+                    <span className="text-sm font-mono text-gray-500 dark:text-gray-400">
+                      {project.year}
+                    </span>
+                  </div>
+
+                  {/* Title */}
+                  <h3 className={`
+                    font-bold mb-3 group-hover:text-primary dark:group-hover:text-primary-400 
+                    transition-colors duration-300
+                    ${isFeatured ? 'text-2xl md:text-3xl' : 'text-xl md:text-2xl'}
+                  `}>
+                    {project.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-gray-600 dark:text-gray-400 mb-6 line-clamp-2">
+                    {project.description || 'Strategic digital solution delivering exceptional user experience and measurable results.'}
+                  </p>
+
+                  {/* Tech Tags */}
+                  {project.tags && (
+                    <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-gray-100">
+                      {project.tags.slice(0, 3).map((tag, tagIndex) => (
+                        <span 
+                          key={tagIndex}
+                          className="px-3 py-1 text-xs font-medium bg-gray-100  rounded-full"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                      {project.tags.length > 3 && (
+                        <span className="px-3 py-1 text-xs text-gray-500">
+                          +{project.tags.length - 3} more
+                        </span>
+                      )}
+                    </div>
+                  )}
+
+                  {/* View Link */}
+                  <div className="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700">
+                    <div className="flex items-center gap-2 text-primary dark:text-primary-400 text-sm font-medium">
+                      <span>View Project</span>
+                      <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-1 transition-transform duration-200" />
+                    </div>
+                  </div>
                 </div>
 
-                {/* Title */}
-                <h3 className={`
-                  font-bold mb-3 group-hover:text-primary dark:group-hover:text-primary-400 
-                  transition-colors duration-300
-                  ${isFeatured ? 'text-2xl md:text-3xl' : 'text-xl md:text-2xl'}
-                `}>
-                  {project.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-gray-600 dark:text-gray-400 mb-6 line-clamp-2">
-                  {project.description || 'Strategic digital solution delivering exceptional user experience and measurable results.'}
-                </p>
-
-                {/* Tech Tags */}
-                {project.tags && (
-                  <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-gray-100 dark:border-gray-700">
-                    {project.tags.slice(0, 3).map((tag, tagIndex) => (
-                      <span 
-                        key={tagIndex}
-                        className="px-3 py-1 text-xs font-medium bg-gray-100 dark:bg-gray-700 rounded-full"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                    {project.tags.length > 3 && (
-                      <span className="px-3 py-1 text-xs text-gray-500">
-                        +{project.tags.length - 3} more
-                      </span>
-                    )}
-                  </div>
-                )}
-
-                {/* View Link */}
-                <div className="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700">
-                  <div className="flex items-center gap-2 text-primary dark:text-primary-400 text-sm font-medium">
-                    <span>View Project</span>
-                    <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-1  transition-transform" />
-                  </div>
-                </div>
-              </div>
-
-              {/* Hover Border Effect */}
-              <div className="absolute inset-0 border-2 border-transparent group-hover:border-primary/20 rounded-2xl transition-all duration-500"></div>
-            </Link>
-          </div>
-        );
-      })}
-    </div>
+                {/* Hover Border Effect */}
+                <div className="absolute inset-0 border-2 border-transparent group-hover:border-primary/20 rounded-2xl transition-all duration-500"></div>
+              </Link>
+            </div>
+          );
+        })}
+      </div>
+    ) : (
+      <div className="text-center py-12">
+        <p className="text-gray-500">Loading projects...</p>
+      </div>
+    )}
 
     {/* View All Button - Centered */}
     <div className="mt-16 text-center">
@@ -415,25 +438,9 @@ const Home = () => {
         </div>
       </Link>
     </div>
-
-    {/* Client Logos */}
-    {/* <div className="mt-20 pt-12 border-t border-gray-200 dark:border-gray-800">
-      <p className="text-center text-sm uppercase tracking-widest text-gray-500 dark:text-gray-400 mb-8">
-        Trusted by innovative teams
-      </p>
-      <div className="flex flex-wrap justify-center gap-8 md:gap-12 items-center">
-        {['ONYX', 'VORTEX', 'APEX', 'NEXUS', 'VERGE'].map((client, index) => (
-          <div
-            key={index}
-            className="text-xl font-bold text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
-          >
-            {client}
-          </div>
-        ))}
-      </div>
-    </div> */}
   </div>
 </section>
+
 
         {/* Stats Section
         <section className="py-20 md:py-10">
