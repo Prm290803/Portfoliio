@@ -110,7 +110,7 @@ export const Footer = () => {
           <div className="md:col-span-6 lg:col-span-6">
              <div className='mb-7'>
         <span className="text-3xl md:text-4xl font-black uppercase tracking-[-0.02em]">
-          Build<span className="text-stroke text-white">Crew <br/> Studio</span>
+          Build<span className="text-stroke text-white">Crew</span>
         </span>
       </div>
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 leading-tight">
@@ -196,7 +196,7 @@ export const Footer = () => {
               })}
             </div>
             {/* Newsletter Signup */}
-            <div className="mt-8 pt-8 border-t border-gray-800">
+            {/* <div className="mt-8 pt-8 border-t border-gray-800">
               <p className="text-sm font-semibold text-gray-400 mb-4 uppercase tracking-wider">
                 Newsletter
               </p>
@@ -215,7 +215,7 @@ export const Footer = () => {
                 </button>
               </form>
             </div>
-           
+            */}
           </div>
         </div>
 
