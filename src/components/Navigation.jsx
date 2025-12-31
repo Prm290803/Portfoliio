@@ -67,7 +67,7 @@ export const Navigation = ({ isOpen, setIsOpen }) => {
                 <p>Since 2024</p>
               </div>
               <div className="label-editorial text-right">
-                <p>service@buildcrew.com</p>
+                <p>buildcrew.co@gmail.com</p>
                 <p>+91 9328606257</p>
               </div>
             </div>

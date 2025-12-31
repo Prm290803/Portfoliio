@@ -274,15 +274,15 @@ const Contact = () => {
                 <div className="space-y-12">
                   <div>
                     <span className="label-editorial text-muted-foreground mb-4 block">Email</span>
-                    <a href="mailto:hello@buildcrew.com" className="text-xl md:text-2xl font-medium hover:text-muted-foreground transition-colors flex items-center gap-3">
+                    <a href="mailto:buildcrew.co@gmail.com" className="text-xl md:text-2xl font-medium hover:text-muted-foreground transition-colors flex items-center gap-3">
                       <Mail className="w-5 h-5" />
-                      hello@buildcrew.com
+                      buildcrew.co@gmail.com
                     </a>
                   </div>
 
                   <div>
                     <span className="label-editorial text-muted-foreground mb-4 block">Phone</span>
-                    <a href="tel:+15551234567" className="text-xl md:text-2xl font-medium hover:text-muted-foreground transition-colors flex items-center gap-3">
+                    <a href="tel:+919328606257" className="text-xl md:text-2xl font-medium hover:text-muted-foreground transition-colors flex items-center gap-3">
                       <Phone className="w-5 h-5" />
                       +91 9328606257
                     </a>
@@ -311,11 +311,11 @@ const Contact = () => {
         </section>
 
         {/* Map placeholder */}
-        <section className="h-[50vh] bg-secondary relative">
+        {/* <section className="h-[50vh] bg-secondary relative">
           <div className="absolute inset-0 flex items-center justify-center">
             <span className="label-editorial text-muted-foreground">Interactive Map</span>
           </div>
-        </section>
+        </section> */}
       </div>
       </PageTransition>
     </Layout>

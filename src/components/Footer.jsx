@@ -78,19 +78,19 @@ export const Footer = () => {
   const contactInfo = [
     {
       icon: Mail,
-      content: 'hello@buildcrew.com',
-      href: 'mailto:hello@buildcrew.com',
+      content: 'buildcrew.co@gmail.com',
+      href: 'mailto:buildcrew.co@gmail.com',
       type: 'email'
     },
     {
       icon: Phone,
-      content: '+1 (555) 123-4567',
-      href: 'tel:+15551234567',
+      content: '+91 9328606257',
+      href: 'tel:+919328606257',
       type: 'telephone'
     },
     {
       icon: MapPin,
-      content: '123 Innovation Drive\nSan Francisco, CA 94102',
+      content: 'mohan arcade, thamna chokdi, umreth-388220, gujarat, india',
       type: 'address'
     }
   ];
