@@ -383,7 +383,7 @@ const Services = () => {
             ref={heroRef}
           >
             <div className="container mx-auto px-6 md:px-12">
-              <div className="grid grid-cols-1 md:grid-cols-10 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-8 gap-8">
                 <div className="md:col-span-8">
                   <span className="hero-label label-editorial text-muted-foreground mb-6 block">
                     Our Services

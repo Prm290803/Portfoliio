@@ -98,9 +98,9 @@ const About = () => {
       <div  >
         {/* Hero */}
 
-        <section className="min-h-[70vh] pb-20 pt-32" ref={heroRef}>
+        <section className="min-h-[70vh] pb-20 pt-30" ref={heroRef}>
           <div className="container w-screen px-6 md:px-12">
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-10 gap-8">
               <div className="md:col-span-8">
                 <span className="label-editorial text-muted-foreground mb-4 block">About Us</span>
                 <div className="hero-title overflow-hidden top-100 md:top-30 lg:top-1/2">
