@@ -16,7 +16,7 @@ import Loader from "./IntroAnimation";
 import { useEffect, useState } from "react";
 import ProjectPage from "./Pages/Work/ProjectPage";
 import ServiceDetail from "./Pages/Services/ServiceDetails";
-
+import { Analytics } from "@vercel/analytics/next"
 export default function App() {
   const location = useLocation();
   const [loading, setLoading] = useState(location.pathname === "/");
@@ -31,6 +31,8 @@ export default function App() {
   }, [location.pathname]);
 
   return (
+    <>
+    <Analytics />
     <LenisProvider>
       <DigitalCurtainTransition>
         <AnimatePresence mode="wait">
@@ -51,6 +53,8 @@ export default function App() {
           )}
         </AnimatePresence>
       </DigitalCurtainTransition>
+
     </LenisProvider>
+</>
   );
 }

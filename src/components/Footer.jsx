@@ -108,11 +108,12 @@ export const Footer = () => {
         <div className="grid md:grid-cols-12 gap-8 md:gap-12 mb-12">
           {/* Call to Action */}
           <div className="md:col-span-6 lg:col-span-6">
-             <div className='mb-7'>
+            <img src="/LogoWhite.png" alt="BuildCrew" className="w-50 h-50 mb-2" />
+             {/* <div className='mb-7'>
         <span className="text-3xl md:text-4xl font-black uppercase tracking-[-0.02em]">
           Build<span className="text-stroke text-white">Crew</span>
-        </span>
-      </div>
+        </span> */}
+      
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 leading-tight">
               Let's Create<br />
               <span className="text-transparent bg-clip-text bg-white/90">

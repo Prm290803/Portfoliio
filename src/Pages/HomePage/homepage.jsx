@@ -300,7 +300,7 @@ const Home = () => {
           Our Portfolio
         </span>
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
-          Digital<br className="sm:hidden" /> Masterpieces
+          Digital<br className="sm:hidden" /> Creation
         </h2>
         <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
           Transforming ideas into impactful digital experiences that drive results.
