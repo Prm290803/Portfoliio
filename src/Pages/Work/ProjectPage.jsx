@@ -41,11 +41,15 @@ import PageTransition from '../../components/PageTransition';
 import projectData from '../../Data/Project.json';
 import Portal from '../../components/Portal';
 
+// Register GSAP plugins
+gsap.registerPlugin(ScrollTrigger);
+
 const ProjectPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const containerRef = useRef(null);
   const heroRef = useRef(null);
+  const contentSectionsRef = useRef([]);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   
@@ -53,10 +57,21 @@ const ProjectPage = () => {
   const projects = projectData.projects || projectData;
   const project = projects.find(p => p.id === parseInt(id));
 
-  // Scroll to top on mount
+  // Scroll to top on mount with smooth animation
   useEffect(() => {
-    window.scrollTo(0, 0);
+    gsap.to(window, {
+      duration: 0.5,
+      scrollTo: 0,
+      ease: 'power2.out'
+    });
   }, [id]);
+
+  // Add section refs
+  const addToContentSectionsRef = (el) => {
+    if (el && !contentSectionsRef.current.includes(el)) {
+      contentSectionsRef.current.push(el);
+    }
+  };
 
   // Navigation functions for image gallery
   const nextImage = () => {
@@ -75,13 +90,29 @@ const ProjectPage = () => {
     }
   };
 
+  // Smooth image transition animation
+  useEffect(() => {
+    const heroImage = document.querySelector('.project-hero-image img');
+    if (heroImage) {
+      gsap.fromTo(heroImage,
+        { opacity: 0, scale: 1.05 },
+        { 
+          opacity: 1, 
+          scale: 1, 
+          duration: 0.8, 
+          ease: 'power2.out' 
+        }
+      );
+    }
+  }, [selectedImageIndex]);
+
   // Keyboard navigation for lightbox
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (!isLightboxOpen || !project?.images) return;
       
       if (e.key === 'Escape') {
-        setIsLightboxOpen(false);
+        handleCloseLightbox();
       } else if (e.key === 'ArrowRight' || e.key === ' ') {
         nextImage();
       } else if (e.key === 'ArrowLeft') {
@@ -93,220 +124,391 @@ const ProjectPage = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isLightboxOpen, selectedImageIndex, project?.images]);
 
-  // Touch/swipe support for mobile
+  // Touch/swipe support for mobile with smooth transitions
   useEffect(() => {
     if (!isLightboxOpen || !project?.images) return;
     
     let touchStartX = 0;
     let touchEndX = 0;
+    let isSwiping = false;
     
     const handleTouchStart = (e) => {
       touchStartX = e.changedTouches[0].screenX;
+      isSwiping = true;
+    };
+    
+    const handleTouchMove = (e) => {
+      if (!isSwiping) return;
+      touchEndX = e.changedTouches[0].screenX;
     };
     
     const handleTouchEnd = (e) => {
-      touchEndX = e.changedTouches[0].screenX;
+      if (!isSwiping) return;
+      isSwiping = false;
       handleSwipe();
     };
     
     const handleSwipe = () => {
-      const swipeThreshold = 50;
+      const swipeThreshold = 30;
       const diff = touchStartX - touchEndX;
       
       if (Math.abs(diff) > swipeThreshold) {
         if (diff > 0) {
-          nextImage(); // Swipe left
+          nextImage();
         } else {
-          prevImage(); // Swipe right
+          prevImage();
         }
       }
     };
     
     document.addEventListener('touchstart', handleTouchStart);
+    document.addEventListener('touchmove', handleTouchMove);
     document.addEventListener('touchend', handleTouchEnd);
     
     return () => {
       document.removeEventListener('touchstart', handleTouchStart);
+      document.removeEventListener('touchmove', handleTouchMove);
       document.removeEventListener('touchend', handleTouchEnd);
     };
   }, [isLightboxOpen, selectedImageIndex, project?.images]);
 
-  // GSAP Animations
+  // Enhanced GSAP Animations
   useEffect(() => {
     if (!project) return;
-    
-    gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
-      // Hero section animations
+      // Smooth fade-in on initial load
+      gsap.fromTo('body',
+        { opacity: 0 },
+        { opacity: 1, duration: 0.8, ease: 'power2.out' }
+      );
+
+      // Enhanced hero section animations with stagger
       gsap.fromTo(
         '.hero-content > *',
-        { y: 100, opacity: 0 },
+        { 
+          y: 40, 
+          opacity: 0,
+          filter: 'blur(10px)'
+        },
         {
           y: 0,
           opacity: 1,
-          stagger: 0.15,
-          duration: 1.2,
+          filter: 'blur(0px)',
+          stagger: {
+            each: 0.1,
+            from: 'start'
+          },
+          duration: 1,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: heroRef.current,
-            start: 'top 80%',
-            toggleActions: 'play none none none'
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+            once: true
           }
         }
       );
 
-      // Project image reveal
+      // Project image reveal with parallax effect
       gsap.fromTo(
         '.project-hero-image',
-        { scale: 1.1, opacity: 0 },
+        { 
+          scale: 1.08, 
+          opacity: 0,
+          y: 50
+        },
         {
           scale: 1,
           opacity: 1,
-          duration: 1.5,
+          y: 0,
+          duration: 1.2,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: '.project-hero-image',
-            start: 'top 85%',
-            toggleActions: 'play none none none'
+            start: 'top 90%',
+            toggleActions: 'play none none reverse',
+            once: true
           }
         }
       );
 
-      // Section animations
-      gsap.utils.toArray('.content-section').forEach((section, i) => {
-        gsap.fromTo(
-          section,
-          { y: 80, opacity: 0 },
+      // Create a subtle parallax effect for hero image
+      gsap.to('.project-hero-image', {
+        y: -30,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.project-hero-image',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1
+        }
+      });
+
+      // Enhanced section animations with smooth reveal
+      contentSectionsRef.current.forEach((section, i) => {
+        gsap.fromTo(section,
+          { 
+            y: 60,
+            opacity: 0,
+            scale: 0.98
+          },
           {
             y: 0,
             opacity: 1,
-            duration: 1,
-            ease: 'power3.out',
+            scale: 1,
+            duration: 0.9,
+            ease: 'power2.out',
+            delay: i * 0.1,
             scrollTrigger: {
               trigger: section,
-              start: 'top 85%',
-              end: 'bottom 15%',
-              toggleActions: 'play none none none'
+              start: 'top 90%',
+              end: 'bottom 20%',
+              toggleActions: 'play none none reverse',
+              once: true
             }
           }
         );
       });
 
-      // Feature items animation
+      // Feature items with bounce animation
       gsap.utils.toArray('.feature-item').forEach((item, i) => {
-        gsap.fromTo(
-          item,
-          { x: -50, opacity: 0 },
+        gsap.fromTo(item,
+          { 
+            x: -30,
+            opacity: 0,
+            rotateX: -15
+          },
           {
             x: 0,
             opacity: 1,
-            duration: 0.8,
-            delay: i * 0.1,
-            ease: 'power3.out',
+            rotateX: 0,
+            duration: 0.7,
+            delay: i * 0.07,
+            ease: 'back.out(1.2)',
             scrollTrigger: {
               trigger: item,
-              start: 'top 90%',
-              toggleActions: 'play none none none'
+              start: 'top 95%',
+              toggleActions: 'play none none reverse',
+              once: true
             }
           }
         );
       });
 
-      // Tech stack animation
-      gsap.fromTo(
-        '.tech-stack-item',
-        { scale: 0.8, opacity: 0 },
+      // Tech stack animation with scale and color transition
+      gsap.fromTo('.tech-stack-item',
+        { 
+          scale: 0.7,
+          opacity: 0,
+          backgroundColor: 'rgba(255,255,255,0)',
+          borderColor: 'rgba(229,231,235,0)'
+        },
         {
           scale: 1,
           opacity: 1,
-          stagger: 0.05,
-          duration: 0.6,
-          ease: 'back.out(1.7)',
+          backgroundColor: 'rgba(249,250,251,1)',
+          borderColor: 'rgba(229,231,235,1)',
+          stagger: {
+            each: 0.03,
+            from: 'start'
+          },
+          duration: 0.5,
+          ease: 'back.out(1.4)',
           scrollTrigger: {
             trigger: '.tech-stack-grid',
-            start: 'top 85%',
-            toggleActions: 'play none none none'
+            start: 'top 90%',
+            toggleActions: 'play none none reverse',
+            once: true
           }
         }
       );
 
-      // Gallery items animation
-      gsap.fromTo(
-        '.gallery-item',
-        { scale: 0.9, opacity: 0 },
+      // Gallery items with fade-up animation
+      gsap.fromTo('.gallery-item',
+        { 
+          y: 40,
+          opacity: 0,
+          scale: 0.95
+        },
         {
-          scale: 1,
+          y: 0,
           opacity: 1,
-          stagger: 0.1,
-          duration: 0.8,
-          ease: 'power3.out',
+          scale: 1,
+          stagger: {
+            each: 0.05,
+            from: 'start'
+          },
+          duration: 0.6,
+          ease: 'power2.out',
           scrollTrigger: {
             trigger: '.gallery-section',
-            start: 'top 85%',
-            toggleActions: 'play none none none'
+            start: 'top 90%',
+            toggleActions: 'play none none reverse',
+            once: true
           }
         }
       );
 
-      // Related projects animation
-      gsap.fromTo(
-        '.related-project-card',
-        { y: 60, opacity: 0 },
+      // Related projects with 3D flip effect
+      gsap.fromTo('.related-project-card',
+        { 
+          y: 40,
+          opacity: 0,
+          rotateY: -10
+        },
         {
           y: 0,
           opacity: 1,
-          stagger: 0.1,
+          rotateY: 0,
+          stagger: {
+            each: 0.1,
+            from: 'start'
+          },
           duration: 0.8,
-          ease: 'power3.out',
+          ease: 'power2.out',
           scrollTrigger: {
             trigger: '.related-projects-section',
-            start: 'top 85%',
-            toggleActions: 'play none none none'
+            start: 'top 90%',
+            toggleActions: 'play none none reverse',
+            once: true
           }
         }
       );
 
-      // Achievements animation
-      gsap.fromTo(
-        '.achievement-item',
-        { y: 40, opacity: 0 },
+      // Achievements with line drawing effect
+      gsap.fromTo('.achievement-item',
+        { 
+          x: -20,
+          opacity: 0,
+          width: '0%'
+        },
         {
-          y: 0,
+          x: 0,
           opacity: 1,
-          stagger: 0.1,
-          duration: 0.8,
-          ease: 'power3.out',
+          width: '100%',
+          stagger: {
+            each: 0.08,
+            from: 'start'
+          },
+          duration: 0.7,
+          ease: 'power2.out',
           scrollTrigger: {
             trigger: '.achievements-section',
-            start: 'top 85%',
-            toggleActions: 'play none none none'
+            start: 'top 90%',
+            toggleActions: 'play none none reverse',
+            once: true
           }
         }
       );
 
-      // Metrics animation
-      // gsap.fromTo(
-      //   '.metric-item',
-      //   { scale: 0.9, opacity: 0 },
-      //   {
-      //     scale: 1,
-      //     opacity: 1,
-      //     stagger: 0.1,
-      //     duration: 0.8,
-      //     ease: 'back.out(1.7)',
-      //     scrollTrigger: {
-      //       trigger: '.metrics-section',
-      //       start: 'top 85%',
-      //       toggleActions: 'play none none none'
-      //     }
-      //   }
-      // );
+      // Floating animation for CTA buttons
+      gsap.to('.cta-button', {
+        y: -5,
+        duration: 2,
+        repeat: -1,
+        yoyo: true,
+        ease: 'power1.inOut'
+      });
+
+      // Hover animations for interactive elements
+      const interactiveElements = document.querySelectorAll('.interactive-element');
+      interactiveElements.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+          gsap.to(el, {
+            scale: 1.05,
+            duration: 0.3,
+            ease: 'power2.out'
+          });
+        });
+        
+        el.addEventListener('mouseleave', () => {
+          gsap.to(el, {
+            scale: 1,
+            duration: 0.3,
+            ease: 'power2.out'
+          });
+        });
+      });
+
+      // Smooth scroll for internal links
+      gsap.utils.toArray('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const target = document.querySelector(link.getAttribute('href'));
+          if (target) {
+            gsap.to(window, {
+              duration: 1,
+              scrollTo: {
+                y: target,
+                offsetY: 100
+              },
+              ease: 'power3.inOut'
+            });
+          }
+        });
+      });
 
     }, containerRef);
 
     return () => ctx.revert();
   }, [project]);
+
+  // Smooth lightbox open/close animations
+  const handleOpenLightbox = () => {
+    setIsLightboxOpen(true);
+    // Prevent body scroll
+    document.body.style.overflow = 'hidden';
+    
+    // Animate lightbox opening
+    gsap.fromTo('.lightbox-content',
+      { 
+        scale: 0.9,
+        opacity: 0,
+        rotationY: -10
+      },
+      { 
+        scale: 1,
+        opacity: 1,
+        rotationY: 0,
+        duration: 0.5,
+        ease: 'back.out(1.2)'
+      }
+    );
+  };
+
+  const handleCloseLightbox = () => {
+    // Animate lightbox closing
+    gsap.to('.lightbox-content', {
+      scale: 0.9,
+      opacity: 0,
+      rotationY: 10,
+      duration: 0.3,
+      ease: 'power2.in',
+      onComplete: () => {
+        setIsLightboxOpen(false);
+        document.body.style.overflow = 'auto';
+      }
+    });
+  };
+
+  // Smooth image navigation in lightbox
+  const handleImageNavigation = (direction) => {
+    const currentIndex = selectedImageIndex;
+    const totalImages = project?.images?.length || 0;
+    
+    if (direction === 'next') {
+      setSelectedImageIndex((currentIndex + 1) % totalImages);
+    } else {
+      setSelectedImageIndex((currentIndex - 1 + totalImages) % totalImages);
+    }
+    
+    // Animate image transition
+    gsap.fromTo('.lightbox-image',
+      { opacity: 0, scale: 0.95 },
+      { opacity: 1, scale: 1, duration: 0.4, ease: 'power2.out' }
+    );
+  };
 
   // If project not found
   if (!project) {
@@ -319,7 +521,7 @@ const ProjectPage = () => {
               <p className="text-gray-600 mb-8">The project you're looking for doesn't exist.</p>
               <button
                 onClick={() => navigate('/work')}
-                className="inline-flex items-center gap-2 px-6 py-3 border-2 border-black text-black hover:bg-black hover:text-white transition-all duration-300 rounded-full"
+                className="cta-button interactive-element inline-flex items-center gap-2 px-6 py-3 border-2 border-black text-black hover:bg-black hover:text-white transition-all duration-300 rounded-full"
               >
                 <ArrowLeft className="w-4 h-4" />
                 Back to Projects
@@ -398,21 +600,28 @@ const ProjectPage = () => {
   return (
     <Layout>
       <PageTransition>
-        <div ref={containerRef} className="pt-20">
-          {/* Back Button */}
+        <div ref={containerRef} className="pt-20 overflow-hidden">
+          {/* Back Button with smooth animation */}
           <div className="fixed bottom-3 lg:bottom-14 left-3 lg:left-10 z-50">
             <button
-              onClick={() => navigate('/work')}
-              className="group flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-sm border border-gray-200 rounded-full hover:bg-black hover:text-white transition-all duration-300 shadow-lg"
+              onClick={() => {
+                gsap.to(window, {
+                  duration: 0.5,
+                  scrollTo: 0,
+                  ease: 'power2.out',
+                  onComplete: () => navigate('/work')
+                });
+              }}
+              className="group interactive-element flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-sm border border-gray-200 rounded-full hover:bg-black hover:text-white transition-all duration-300 shadow-lg"
             >
-              <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+              <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-300" />
               <span className="text-sm">Back</span>
             </button>
           </div>
 
           {/* Project Type Badge */}
           <div className="absolute top-28 right-6 z-50">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-black backdrop-blur-sm border text-white border-gray-200 md:hidden rounded-full text-sm font-medium ">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-black backdrop-blur-sm border text-white border-gray-200 md:hidden rounded-full text-sm font-medium animate-pulse">
               {project.category === 'Mobile Development' ? (
                 <>
                   <Smartphone className="w-4 h-4" />
@@ -446,52 +655,54 @@ const ProjectPage = () => {
           <section ref={heroRef} className="pt-32 pb-20 md:pb-32 relative">
             <div className="container mx-auto px-6 md:px-12">
               <div className="hero-content max-w-5xl">
+                {/* Tags with staggered animation */}
                 <div className="flex flex-wrap items-center gap-3 mb-6">
-                  <span className="inline-flex items-center gap-2 text-sm uppercase tracking-widest text-gray-500 px-3 py-1.5 bg-gray-100 rounded-full">
+                  <span className="inline-flex items-center gap-2 text-sm uppercase tracking-widest text-gray-500 px-3 py-1.5 bg-gray-100 rounded-full transform transition-transform hover:scale-105 duration-300">
                     {project.category}
                   </span>
-                  <span className="text-sm px-3 py-1.5 bg-gray-100 text-gray-700 rounded-full">
+                  <span className="text-sm px-3 py-1.5 bg-gray-100 text-gray-700 rounded-full transform transition-transform hover:scale-105 duration-300">
                     {project.year}
                   </span>
                   {project.tags?.includes('Android') && (
-                    <span className="text-sm px-3 py-1.5 bg-green-100 text-green-800 rounded-full flex items-center gap-1">
+                    <span className="text-sm px-3 py-1.5 bg-green-100 text-green-800 rounded-full flex items-center gap-1 transform transition-transform hover:scale-105 duration-300">
                       <Smartphone className="w-3 h-3" />
                       Android
                     </span>
                   )}
                   {project.tags?.includes('Flutter') && (
-                    <span className="text-sm px-3 py-1.5 bg-blue-100 text-blue-800 rounded-full flex items-center gap-1">
+                    <span className="text-sm px-3 py-1.5 bg-blue-100 text-blue-800 rounded-full flex items-center gap-1 transform transition-transform hover:scale-105 duration-300">
                       <Layers className="w-3 h-3" />
                       Flutter
                     </span>
                   )}
                   {project.tags?.includes('React') && (
-                    <span className="text-sm px-3 py-1.5 bg-cyan-100 text-cyan-800 rounded-full flex items-center gap-1">
+                    <span className="text-sm px-3 py-1.5 bg-cyan-100 text-cyan-800 rounded-full flex items-center gap-1 transform transition-transform hover:scale-105 duration-300">
                       <Monitor className="w-3 h-3" />
                       React
                     </span>
                   )}
                   {project.tags?.includes('Node.js') && (
-                    <span className="text-sm px-3 py-1.5 bg-emerald-100 text-emerald-800 rounded-full flex items-center gap-1">
+                    <span className="text-sm px-3 py-1.5 bg-emerald-100 text-emerald-800 rounded-full flex items-center gap-1 transform transition-transform hover:scale-105 duration-300">
                       <Server className="w-3 h-3" />
                       Node.js
                     </span>
                   )}
                   {project.tags?.includes('Firebase') && (
-                    <span className="text-sm px-3 py-1.5 bg-orange-100 text-orange-800 rounded-full flex items-center gap-1">
+                    <span className="text-sm px-3 py-1.5 bg-orange-100 text-orange-800 rounded-full flex items-center gap-1 transform transition-transform hover:scale-105 duration-300">
                       <Database className="w-3 h-3" />
                       Firebase
                     </span>
                   )}
                   {project.tags?.includes('GSAP') && (
-                    <span className="text-sm px-3 py-1.5 bg-purple-100 text-purple-800 rounded-full flex items-center gap-1">
+                    <span className="text-sm px-3 py-1.5 bg-purple-100 text-purple-800 rounded-full flex items-center gap-1 transform transition-transform hover:scale-105 duration-300">
                       <Rocket className="w-3 h-3" />
                       GSAP
                     </span>
                   )}
                 </div>
                 
-                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-tight">
+                {/* Title with smooth reveal */}
+                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-tight bg-gradient-to-r from-black to-gray-700 bg-clip-text text-transparent">
                   {project.title}
                 </h1>
                 
@@ -499,18 +710,18 @@ const ProjectPage = () => {
                   {project.description}
                 </p>
 
-                {/* Project Links */}
+                {/* Project Links with hover animations */}
                 <div className="flex flex-wrap gap-4 mb-12">
                   {project.liveUrl && (
                     <a
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group flex items-center gap-2 px-6 py-3 bg-black text-white hover:bg-gray-800 transition-all duration-300 rounded-full shadow-lg hover:shadow-xl"
+                      className="group cta-button interactive-element flex items-center gap-2 px-6 py-3 bg-black text-white hover:bg-gray-800 transition-all duration-300 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                     >
-                      <Globe className="w-4 h-4" />
+                      <Globe className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" />
                       {getLiveButtonText()}
-                      <ExternalLink className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                      <ExternalLink className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
                     </a>
                   )}
                   
@@ -519,18 +730,18 @@ const ProjectPage = () => {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group flex items-center gap-2 px-6 py-3 border-2 border-black text-black hover:bg-black hover:text-white transition-all duration-300 rounded-full"
+                      className="group interactive-element flex items-center gap-2 px-6 py-3 border-2 border-black text-black hover:bg-black hover:text-white transition-all duration-300 rounded-full transform hover:-translate-y-1"
                     >
-                      <Github className="w-4 h-4" />
+                      <Github className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" />
                       View Source Code
-                      <ExternalLink className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                      <ExternalLink className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
                     </a>
                   )}
                 </div>
 
-                {/* Project Stats */}
+                {/* Project Stats with hover effects */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 border-t border-gray-200 pt-8">
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 p-4 rounded-xl hover:bg-gray-50 transition-all duration-300">
                     <Calendar className="w-5 h-5 text-gray-400" />
                     <div>
                       <p className="text-sm text-gray-500">Duration</p>
@@ -538,7 +749,7 @@ const ProjectPage = () => {
                     </div>
                   </div>
                   
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 p-4 rounded-xl hover:bg-gray-50 transition-all duration-300">
                     <Users className="w-5 h-5 text-gray-400" />
                     <div>
                       <p className="text-sm text-gray-500">Team Size</p>
@@ -546,7 +757,7 @@ const ProjectPage = () => {
                     </div>
                   </div>
                   
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 p-4 rounded-xl hover:bg-gray-50 transition-all duration-300">
                     <Code className="w-5 h-5 text-gray-400" />
                     <div>
                       <p className="text-sm text-gray-500">Role</p>
@@ -566,8 +777,8 @@ const ProjectPage = () => {
                   <img 
                     src={project.images[selectedImageIndex] || project.image} 
                     alt={`${project.title} - Image ${selectedImageIndex + 1}`}
-                    className="w-full h-auto max-h-[600px] object-cover cursor-pointer"
-                    onClick={() => setIsLightboxOpen(true)}
+                    className="w-full h-auto max-h-[600px] object-cover cursor-pointer transition-transform duration-700 ease-out"
+                    onClick={handleOpenLightbox}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                   
@@ -579,7 +790,7 @@ const ProjectPage = () => {
                           e.stopPropagation();
                           prevImage();
                         }}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-white shadow-lg"
+                        className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-white shadow-lg transform hover:scale-110"
                       >
                         <ChevronLeft className="w-5 h-5" />
                       </button>
@@ -589,7 +800,7 @@ const ProjectPage = () => {
                           e.stopPropagation();
                           nextImage();
                         }}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-white shadow-lg"
+                        className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-white shadow-lg transform hover:scale-110"
                       >
                         <ChevronRight className="w-5 h-5" />
                       </button>
@@ -598,15 +809,15 @@ const ProjectPage = () => {
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
-                          setIsLightboxOpen(true);
+                          handleOpenLightbox();
                         }}
-                        className="absolute top-4 right-4 w-10 h-10 backdrop-blur-sm rounded-full flex items-center bg-black/20 justify-center text-white hover:bg-black/70 transition-all duration-300"
+                        className="absolute top-4 right-4 w-10 h-10 backdrop-blur-sm rounded-full flex items-center bg-black/20 justify-center text-white hover:bg-black/70 transition-all duration-300 transform hover:scale-110"
                       >
                         <Maximize2 className="w-5 h-5" />
                       </button>
                       
                       {/* Image Counter */}
-                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-black/50 backdrop-blur-sm rounded-full text-white text-sm">
+                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-black/50 backdrop-blur-sm rounded-full text-white text-sm transform transition-all duration-300">
                         {selectedImageIndex + 1} / {project.images.length}
                       </div>
                     </>
@@ -615,15 +826,15 @@ const ProjectPage = () => {
                 
                 {/* Thumbnail Gallery */}
                 {project.images.length > 1 && (
-                  <div className="gallery-item flex  gap-4 mt-6 overflow-x-auto pb-4 scrollbar-hide px-2">
+                  <div className="gallery-item flex gap-4 mt-6 overflow-x-auto pb-4 scrollbar-hide px-2">
                     {project.images.map((img, index) => (
                       <button
                         key={index}
                         onClick={() => setSelectedImageIndex(index)}
-                        className={`flex-shrink-0 w-20 h-20 md:w-24 md:h-24 rounded-lg overflow-hidden border-2 transition-all duration-300 ${
+                        className={`flex-shrink-0 w-20 h-20 md:w-24 md:h-24 rounded-lg overflow-hidden border-2 transition-all duration-300 transform hover:scale-105 ${
                           selectedImageIndex === index 
                             ? 'border-black scale-105 shadow-lg' 
-                            : 'border-transparent '
+                            : 'border-transparent opacity-75 hover:opacity-100'
                         }`}
                       >
                         <img 
@@ -643,7 +854,7 @@ const ProjectPage = () => {
           <div className="container mx-auto px-6 md:px-12">
             {/* Problem & Solution */}
             {(project.problem || project.solution) && (
-              <section className="content-section mb-20 md:mb-32">
+              <section ref={addToContentSectionsRef} className="content-section mb-20 md:mb-32">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
                   {project.problem && (
                     <div>
@@ -672,17 +883,17 @@ const ProjectPage = () => {
 
             {/* Key Features */}
             {project.features && project.features.length > 0 && (
-              <section className="content-section mb-20 md:mb-32">
+              <section ref={addToContentSectionsRef} className="content-section mb-20 md:mb-32">
                 <h2 className="text-3xl md:text-4xl font-bold mb-12">Key Features</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {project.features.map((feature, index) => (
-                    <div key={index} className="feature-item p-6 border border-gray-200 rounded-2xl hover:border-black hover:text-white hover:shadow-lg transition-all duration-300 group bg-white">
+                    <div key={index} className="feature-item interactive-element p-6 border border-gray-200 rounded-2xl hover:border-black hover:shadow-xl transition-all duration-300 group bg-white transform hover:-translate-y-2">
                       <div className="flex items-start gap-4">
-                        <div className="flex-shrink-0 p-3 rounded-xl bg-gray-100 group-hover:bg-black transition-colors duration-300">
+                        <div className="flex-shrink-0 p-3 rounded-xl bg-gray-100 group-hover:bg-black transition-all duration-300 transform group-hover:scale-110">
                           {getIconForFeature(feature.title)}
                         </div>
                         <div>
-                          <h3 className="text-xl font-bold mb-2 group-hover:text-black transition-colors">
+                          <h3 className="text-xl font-bold mb-2 group-hover:text-black transition-colors duration-300">
                             {feature.title}
                           </h3>
                           <p className="text-gray-600">
@@ -696,23 +907,21 @@ const ProjectPage = () => {
               </section>
             )}
 
-           
-
             {/* Tech Stack */}
             {project.technologies && project.technologies.length > 0 && (
-              <section className="tech-section  mb-20 md:mb-32">
+              <section ref={addToContentSectionsRef} className="tech-section mb-20 md:mb-32">
                 <div className="flex items-center gap-3 mb-12">
-                  <div className="p-2 bg-white rounded-lg">
+                  <div className="p-2 bg-white rounded-lg transform hover:rotate-12 transition-transform duration-300">
                     <Code className="w-5 h-5 text-black" />
                   </div>
-                  <h2 className="section-title  text-2xl md:text-3xl font-bold">Technology Stack</h2>
+                  <h2 className="section-title text-2xl md:text-3xl font-bold">Technology Stack</h2>
                 </div>
                 
                 <div className="flex tech-stack-grid flex-wrap gap-3">
                   {project.technologies.map((tech, index) => (
                     <div 
                       key={index}
-                      className="tech-item tech-stack-item flex items-center gap-2 px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg hover:border-gray-300 transition-all duration-200"
+                      className="tech-item tech-stack-item interactive-element flex items-center gap-2 px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg hover:border-gray-300 hover:bg-white transition-all duration-200 transform hover:-translate-y-1 hover:shadow-md"
                     >
                       {getIconForTech(tech)}
                       <span className="text-sm font-medium">{tech}</span>
@@ -722,22 +931,21 @@ const ProjectPage = () => {
               </section>
             )}
 
-
-            {/* Achievements - Elegant */}
+            {/* Achievements */}
             {project.achievements && project.achievements.length > 0 && (
-              <section className=" mb-20 md:mb-32">
+              <section ref={addToContentSectionsRef} className="achievements-section mb-20 md:mb-32">
                 <div className="flex items-center gap-3 mb-12">
-                  <div className="p-2 bg-white rounded-lg">
+                  <div className="p-2 bg-white rounded-lg transform hover:rotate-12 transition-transform duration-300">
                     <Award className="w-5 h-5" />
                   </div>
-                  <h2 className="section-title achievements-section text-2xl md:text-3xl font-bold">Key Achievements</h2>
+                  <h2 className="section-title text-2xl md:text-3xl font-bold">Key Achievements</h2>
                 </div>
                 
                 <div className="space-y-4">
                   {project.achievements.map((achievement, index) => (
-                    <div key={index} className="achievement-item content-card flex items-start gap-4 p-4 border border-gray-100 rounded-xl">
-                      <div className="flex-shrink-0 w-6 h-6  rounded-full flex items-center justify-center mt-0.5">
-                        <div className="w-2 h-2 bg-black rounded-full"></div>
+                    <div key={index} className="achievement-item interactive-element flex items-start gap-4 p-4 border border-gray-100 rounded-xl hover:border-gray-200 hover:shadow-sm transition-all duration-300 transform hover:translate-x-2">
+                      <div className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center mt-0.5">
+                        <div className="w-2 h-2 bg-black rounded-full animate-pulse"></div>
                       </div>
                       <p className="text-gray-700">{achievement}</p>
                     </div>
@@ -746,57 +954,45 @@ const ProjectPage = () => {
               </section>
             )}
 
-
-            {/* Metrics
-            {project.metrics && Object.keys(project.metrics).length > 0 && (
-              <section className="content-section metrics-section mb-20 md:mb-32 bg-gradient-to-r from-gray-50 to-gray-100 rounded-3xl p-8 md:p-12">
-                <h2 className="text-3xl md:text-4xl font-bold mb-12">Performance Metrics</h2>
-                <div className="grid grid-cols- sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {Object.entries(project.metrics).map(([key, value]) => (
-                    <div key={key} className="metric-item text-center p-6 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300">
-                      <div className="text-3xl md:text-4xl font-bold text-black mb-2">{value}</div>
-                      <p className="text-sm text-gray-600 capitalize">
-                        {key.replace(/([A-Z])/g, ' $1').trim()}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </section>
-            )} */}
-
-
             {/* Related Projects */}
             {relatedProjects.length > 0 && (
-              <section className="related-projects-section mb-20 md:mb-32">
+              <section ref={addToContentSectionsRef} className="related-projects-section mb-20 md:mb-32">
                 <div className="flex justify-between items-center mb-12">
                   <h2 className="text-3xl md:text-4xl font-bold">Related Projects</h2>
                   <button
                     onClick={() => navigate('/work')}
-                    className="group flex items-center gap-2 text-black hover:underline"
+                    className="group interactive-element flex items-center gap-2 text-black hover:underline transform hover:translate-x-1 transition-transform duration-300"
                   >
                     View All Projects
-                    <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                   </button>
                 </div>
                 
-                <div className="grid grid-cols- md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {relatedProjects.map((relatedProject) => (
                     <div 
                       key={relatedProject.id}
-                      onClick={() => navigate(`/work/${relatedProject.id}`)}
-                      className="related-project-card group cursor-pointer p-4 border border-gray-200 rounded-2xl hover:border-black hover:shadow-lg transition-all duration-300"
+                      onClick={() => {
+                        gsap.to(window, {
+                          duration: 0.3,
+                          scrollTo: 0,
+                          ease: 'power2.out',
+                          onComplete: () => navigate(`/work/${relatedProject.id}`)
+                        });
+                      }}
+                      className="related-project-card interactive-element group cursor-pointer p-4 border border-gray-200 rounded-2xl hover:border-black hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
                     >
                       <div className="relative mb-4 overflow-hidden rounded-xl aspect-video">
                         <img 
                           src={relatedProject.image} 
                           alt={relatedProject.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                         />
                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-500" />
                         
                         {/* Category badge */}
                         <div className="absolute top-4 left-4">
-                          <span className="inline-flex items-center gap-1 px-3 py-1 bg-white/90 backdrop-blur-sm text-xs font-medium rounded-full">
+                          <span className="inline-flex items-center gap-1 px-3 py-1 bg-white/90 backdrop-blur-sm text-xs font-medium rounded-full transform transition-transform group-hover:scale-105 duration-300">
                             {relatedProject.category === 'Mobile Development' ? (
                               <Smartphone className="w-3 h-3" />
                             ) : relatedProject.category === 'Web Development' ? (
@@ -812,13 +1008,13 @@ const ProjectPage = () => {
                         
                         {/* Year badge */}
                         <div className="absolute top-4 right-4">
-                          <span className="inline-block px-3 py-1 bg-black/80 text-white text-xs rounded-full">
+                          <span className="inline-block px-3 py-1 bg-black/80 text-white text-xs rounded-full transform transition-transform group-hover:scale-105 duration-300">
                             {relatedProject.year}
                           </span>
                         </div>
                       </div>
                       <div>
-                        <h3 className="text-xl font-bold mb-2 group-hover:text-black transition-colors line-clamp-1">
+                        <h3 className="text-xl font-bold mb-2 group-hover:text-black transition-colors duration-300 line-clamp-1">
                           {relatedProject.title}
                         </h3>
                         <p className="text-gray-600 text-sm line-clamp-2 mb-3">
@@ -827,14 +1023,14 @@ const ProjectPage = () => {
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-2">
                             {relatedProject.tags?.slice(0, 2).map((tag, idx) => (
-                              <span key={idx} className="text-xs px-2 py-1 bg-gray-100 rounded-full text-gray-600">
+                              <span key={idx} className="text-xs px-2 py-1 bg-gray-100 rounded-full text-gray-600 transform transition-transform hover:scale-105 duration-300">
                                 {tag}
                               </span>
                             ))}
                           </div>
-                          <span className="inline-flex items-center gap-1 text-sm text-gray-400 group-hover:text-black transition-colors">
+                          <span className="inline-flex items-center gap-1 text-sm text-gray-400 group-hover:text-black transition-colors duration-300">
                             View Details
-                            <ChevronRight className="w-4 h-4" />
+                            <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                           </span>
                         </div>
                       </div>
@@ -846,7 +1042,7 @@ const ProjectPage = () => {
           </div>
 
           {/* CTA Section */}
-          <section className="py-20 md:py-32 bg-black text-white">
+          <section className="py-20 md:py-32 bg-black text-white overflow-hidden">
             <div className="container mx-auto px-6 md:px-12 text-center">
               <h2 className="text-4xl md:text-6xl font-bold mb-6">Ready to Start Your Project?</h2>
               <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
@@ -855,13 +1051,13 @@ const ProjectPage = () => {
               <div className="flex flex-wrap justify-center gap-4">
                 <button
                   onClick={() => navigate('/contact')}
-                  className="px-8 py-4 bg-white text-black hover:bg-gray-100 transition-all duration-300 rounded-full font-medium shadow-lg hover:shadow-xl"
+                  className="cta-button interactive-element px-8 py-4 bg-white text-black hover:bg-gray-100 transition-all duration-300 rounded-full font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                 >
                   Start a Project
                 </button>
                 <button
                   onClick={() => navigate('/work')}
-                  className="px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-black transition-all duration-300 rounded-full font-medium"
+                  className="cta-button interactive-element px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-black transition-all duration-300 rounded-full font-medium transform hover:-translate-y-1"
                 >
                   View More Work
                 </button>
@@ -869,48 +1065,48 @@ const ProjectPage = () => {
             </div>
           </section>
 
-          {/* Lightbox Modal */}
+          {/* Enhanced Lightbox Modal */}
           {isLightboxOpen && project.images && (
             <Portal>
-            <div className="fixed inset-0 z-[999999] bg-black/95 flex items-center justify-center p-4">
-              <button
-                onClick={() => setIsLightboxOpen(false)}
-                className="absolute top-25 right-6 text-white hover:text-gray-300 transition-colors z-[99999]"
-              >
-                <X className="w-8 h-8" />
-              </button>
-              
-              <button
-                onClick={prevImage}
-                className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 z-10"
-              >
-                <ChevronLeft className="w-6 h-6" />
-              </button>
-              
-              <div className="relative max-w-6xl max-h-[90vh]">
-                <img 
-                  src={project.images[selectedImageIndex]} 
-                  alt={`${project.title} - Fullscreen View`}
-                  className="max-w-full max-h-[90vh] object-contain rounded-lg"
-                />
+              <div className="lightbox-content fixed inset-0 z-[999999] bg-black/95 flex items-center justify-center p-4">
+                <button
+                  onClick={handleCloseLightbox}
+                  className="absolute top-25 right-6 text-white hover:text-gray-300 transition-colors z-[99999] transform hover:scale-110 duration-300"
+                >
+                  <X className="w-8 h-8" />
+                </button>
                 
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-black/50 backdrop-blur-sm rounded-full text-white">
-                  {selectedImageIndex + 1} / {project.images.length}
+                <button
+                  onClick={() => handleImageNavigation('prev')}
+                  className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 z-10 transform hover:scale-110"
+                >
+                  <ChevronLeft className="w-6 h-6" />
+                </button>
+                
+                <div className="relative max-w-6xl max-h-[90vh]">
+                  <img 
+                    src={project.images[selectedImageIndex]} 
+                    alt={`${project.title} - Fullscreen View`}
+                    className="lightbox-image max-w-full max-h-[90vh] object-contain rounded-lg transform transition-transform duration-500 ease-out"
+                  />
+                  
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-black/50 backdrop-blur-sm rounded-full text-white transform transition-all duration-300">
+                    {selectedImageIndex + 1} / {project.images.length}
+                  </div>
+                </div>
+                
+                <button
+                  onClick={() => handleImageNavigation('next')}
+                  className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 z-10 transform hover:scale-110"
+                >
+                  <ChevronRight className="w-6 h-6" />
+                </button>
+                
+                {/* Keyboard shortcuts hint */}
+                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/60 text-sm text-center animate-pulse">
+                  Use ← → arrows or swipe to navigate • ESC to close
                 </div>
               </div>
-              
-              <button
-                onClick={nextImage}
-                className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 z-10"
-              >
-                <ChevronRight className="w-6 h-6" />
-              </button>
-              
-              {/* Keyboard shortcuts hint */}
-              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/60 text-sm text-center">
-                Use ← → arrows or swipe to navigate • ESC to close
-              </div>
-            </div>
             </Portal>
           )}
         </div>

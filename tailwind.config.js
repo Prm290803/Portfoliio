@@ -1,27 +1,37 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
-  content: [ "./src/**/*.{js,jsx}","./pages/**/*.{js,jsx}", "./components/**/*.{js,jsx}", "./app/**/*.{js,jsx}",],
-  prefix: "",
+
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+    "./pages/**/*.{js,jsx,ts,tsx}",
+    "./components/**/*.{js,jsx,ts,tsx}",
+    "./app/**/*.{js,jsx,ts,tsx}",
+  ],
+
   theme: {
+
+    /* ✅ CONTAINER SETTINGS */
     container: {
       center: true,
       padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
     },
+
     extend: {
+      /* ---------- FONTS ---------- */
       fontFamily: {
         display: ["Archivo", "sans-serif"],
         mono: ["Space Mono", "monospace"],
       },
+
+      /* ---------- COLORS (CSS VAR BASED) ---------- */
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -50,6 +60,7 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -61,11 +72,15 @@ module.exports = {
           ring: "hsl(var(--sidebar-ring))",
         },
       },
+
+      /* ---------- BORDER RADIUS ---------- */
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+
+      /* ---------- KEYFRAMES ---------- */
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
@@ -75,6 +90,7 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+
         "fade-up": {
           "0%": { opacity: "0", transform: "translateY(40px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
@@ -104,18 +120,25 @@ module.exports = {
           "100%": { transform: "translateX(-100%)" },
         },
       },
+
+      /* ---------- ANIMATIONS ---------- */
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-up": "fade-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards",
         "fade-in": "fade-in 0.8s ease-out forwards",
-        "slide-in-right": "slide-in-right 1s cubic-bezier(0.16, 1, 0.3, 1) forwards",
-        "slide-in-left": "slide-in-left 1s cubic-bezier(0.16, 1, 0.3, 1) forwards",
-        "scale-in": "scale-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards",
-        "line-expand": "line-expand 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+        "slide-in-right":
+          "slide-in-right 1s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+        "slide-in-left":
+          "slide-in-left 1s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+        "scale-in":
+          "scale-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+        "line-expand":
+          "line-expand 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards",
         marquee: "marquee 30s linear infinite",
       },
     },
   },
+
   plugins: [require("tailwindcss-animate")],
-}
+};

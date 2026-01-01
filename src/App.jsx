@@ -4,7 +4,7 @@ import { LenisProvider } from "./Lenis";
 import DigitalCurtainTransition from "./components/PageTransition";
 
 import HomePage from "./Pages/HomePage/homepage";
-import './App.css'
+import './App.css'  
 import './index.css'
 import About from "./Pages/About/about";
 import Contact from "./Pages/Contact/contact";
@@ -16,7 +16,7 @@ import Loader from "./IntroAnimation";
 import { useEffect, useState } from "react";
 import ProjectPage from "./Pages/Work/ProjectPage";
 import ServiceDetail from "./Pages/Services/ServiceDetails";
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from '@vercel/analytics/react';
 export default function App() {
   const location = useLocation();
   const [loading, setLoading] = useState(location.pathname === "/");

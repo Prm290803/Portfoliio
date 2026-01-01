@@ -8,9 +8,7 @@ import { Layout } from '../../components/Layout';
 import PageTransition from "../../components/PageTransition";
 import ProjectData from "../../Data/Project.json"
 import './homepage.css';
-import { useLenis } from '../../Lenis'; // adjust path
-import {Snowfall} from 'react-snowfall';
-
+import '../../App.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -112,7 +110,7 @@ const Home = () => {
           {
             y: 0,
             opacity: 1,
-            duration: 1,
+            duration: 0.2,
             ease: 'power3.out',
             scrollTrigger: {
               trigger: item,
@@ -139,11 +137,12 @@ const Home = () => {
             <div className="max-w-7xl mx-auto">
               {/* Vertical label */}
              <div className="absolute  md:left-8 top-1/3 sm:top-1/2 md:top-5 -translate-y-1/2 lg:block md:hidden sm:hidden">
-            <div className="relative lg:left-8 right-20 top-50 -translate-y-1/2 md:block  sm:hidden">
+            <div className="relative lg:left-8 right-20 top-150 -translate-y-1/2 hidden md:block">
           <span className="label-vertical hero-subtitle2 text-foreground/80 tracking-[0.4em] font-medium">
             Digital Studio — Est. 2024
           </span>
         </div>
+
             </div>
               {/* Main headline */}
             <div className="hero-title hero-scroll overflow-hidden top-100 md:top-30 lg:top-1/2" >
@@ -253,7 +252,7 @@ const Home = () => {
                 <h2 className="headline-md mt-4">Our Services</h2>
               </div>
               <div className="md:col-span-6 md:col-start-7">
-                <p className="body-editorial text-muted-foreground">
+                <p className="body-editorial text-muted-foreground text-black/50">
                   We specialize in creating digital experiences that merge innovation with functionality, 
                   delivering solutions that drive growth and engagement.
                 </p>

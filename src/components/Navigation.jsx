@@ -61,13 +61,13 @@ export const Navigation = ({ isOpen, setIsOpen }) => {
               ))}
             </nav>
             
-            <div className="absolute bottom-12 left-8 right-8 flex justify-between items-end">
-              <div className="label-editorial">
+            <div className="absolute bottom-12 left-8 right-2 sm:right-8 text-xs lg:text-sm flex flex-col sm:flex-row justify-between items-stretch sm:items-end space-y-4 sm:space-y-0">
+            <div className="label-editorial">
                 <p>Digital Excellence</p>
                 <p>Since 2024</p>
               </div>
-              <div className="label-editorial text-right">
-                <p>buildcrew.co@gmail.com</p>
+              <div className="label-editorial text-left sm:text-right">
+                <p className="break-all sm:break-normal">buildcrew.co@gmail.com</p>
                 <p>+91 9328606257</p>
               </div>
             </div>

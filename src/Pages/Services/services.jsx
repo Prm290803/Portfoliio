@@ -1,337 +1,3 @@
-// import { useEffect, useRef } from 'react';
-// import { Link } from 'react-router-dom';
-// import gsap from 'gsap';
-// import { ScrollTrigger } from 'gsap/ScrollTrigger';
-// import { ArrowUpRight, Globe, Palette, Smartphone, Code, Plug, Wrench, Cloud } from 'lucide-react';
-// import { Layout } from '../../components/Layout';
-// import PageTransition from "../../components/PageTransition";
-
-// gsap.registerPlugin(ScrollTrigger);
-
-// const services = [
-//   {
-//     number: '01',
-//     title: 'Web Development',
-//     description:
-//       'Custom websites and web applications built with modern technologies for optimal performance and scalability.',
-//     icon: Globe,
-//     features: [
-//       'React & Next.js',
-//       'Performance Optimization',
-//       'SEO Best Practices',
-//       'Responsive Design',
-//     ],
-//   },
-//   {
-//     number: '02',
-//     title: 'UI/UX Design',
-//     description:
-//       'User-centered design solutions that combine aesthetics with functionality to create memorable experiences.',
-//     icon: Palette,
-//     features: [
-//       'User Research',
-//       'Wireframing & Prototyping',
-//       'Visual Design',
-//       'Design Systems',
-//     ],
-//   },
-//   {
-//     number: '03',
-//     title: 'Mobile Apps',
-//     description:
-//       'Native and cross-platform mobile applications that deliver seamless experiences on any device.',
-//     icon: Smartphone,
-//     features: [
-//       'iOS & Android',
-//       'React Native',
-//       'Flutter',
-//       'App Store Optimization',
-//     ],
-//   },
-//   {
-//     number: '04',
-//     title: 'Custom Software',
-//     description:
-//       'Tailored software solutions designed to streamline operations and drive business growth.',
-//     icon: Code,
-//     features: [
-//       'Enterprise Solutions',
-//       'SaaS Products',
-//       'Database Design',
-//       'Cloud Architecture',
-//     ],
-//   },
-//   {
-//     number: '05',
-//     title: 'API Integration',
-//     description:
-//       'Seamless integration of third-party services and APIs to extend functionality and connectivity.',
-//     icon: Plug,
-//     features: [
-//       'RESTful APIs',
-//       'GraphQL',
-//       'Payment Gateways',
-//       'CRM Integration',
-//     ],
-//   },
-//   {
-//     number: '06',
-//     title: 'Cloud Services',
-//     description:
-//       'Scalable and secure cloud solutions to deploy, manage, and optimize your digital infrastructure.',
-//     icon: Cloud, // ⬅️ import from lucide-react
-//     features: [
-//       'Cloud Deployment & Migration',
-//       'AWS / Azure / GCP',
-//       'CI/CD Pipelines',
-//       'Scalability & Monitoring',
-//     ],
-//   },
-//   {
-//     number: '07',
-//     title: 'Maintenance & Support',
-//     description:
-//       'Ongoing support and maintenance to keep your digital products running smoothly and securely.',
-//     icon: Wrench,
-//     features: [
-//       '24/7 Monitoring',
-//       'Security Updates',
-//       'Performance Tuning',
-//       'Technical Support',
-//     ],
-//   },
-// ];
-
-
-// const Services = () => {
-//   const containerRef = useRef(null);
-//   const heroRef = useRef(null);
-
-//   useEffect(() => {
-//     const ctx = gsap.context(() => {
-//       // Service title - in AND out
-//       gsap.fromTo(
-//         '.service-title',
-//         { 
-//           y: 100, 
-//           opacity: 0,
-//           scale: 0.95 
-//         },
-//         { 
-//           y: 0, 
-//           opacity: 1, 
-//           scale: 1,
-//           duration: 1.2, 
-//           ease: 'power4.out', 
-//           delay: 0.3,
-//           scrollTrigger: {
-//             trigger: '.service-title',
-//             start: 'top 95%',
-            
-//             scrub: 1,
-//             toggleActions: 'play none none reverse'
-//           }
-//         }
-//       );
-
-//       // Service cards - in AND out with staggered animation
-//       gsap.utils.toArray('.service-card').forEach((card, i) => {
-//         gsap.fromTo(
-//           card,
-//           { 
-//             y: 100, 
-//             opacity: 0,
-//             rotateX: -15,
-//             scale: 0.9 
-//           },
-//           {
-//             y: 0,
-//             opacity: 1,
-//             rotateX: 0,
-//             scale: 1,
-//             duration: 0.8,
-//             delay: i * 0.1, // Stagger based on index
-//             ease: 'power3.out',
-//             scrollTrigger: {
-//               trigger: card,
-//               start: 'top 85%',
-//               end: 'bottom 8%',
-//               scrub: 1,
-//               toggleActions: 'play none none reverse'
-//             }
-//           }
-//         );
-//       });
-
-//     }, containerRef);
-
-//     return () => ctx.revert();
-//   }, []);
-
- 
-//  useEffect(() => {
-//     // Hero animation
-//     const ctx = gsap.context(() => {
-//       gsap.fromTo(
-//         '.hero-title span',
-//         { y: 200, opacity: 0 },
-//         { y: 0, opacity: 1, stagger: 0.1, duration: 1.2, ease: 'power4.out', delay: 0.6 }
-//       );
-
-//       gsap.fromTo(
-//         '.hero-subtitle',
-//         { y: 50, opacity: 0 },
-//         { y: 0, opacity: 1, duration: 1, ease: 'power3.out', delay: 1.3 }
-//       );
-
-//       gsap.fromTo(
-//         '.hero-cta',
-//         { y: 30, opacity: 0 },
-//         { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', delay: 1.5 }
-//       );
-
-//       gsap.fromTo(
-//         '.hero-scroll',
-//         { y: 20, opacity: 0 },
-//         { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', delay: 1.7 }
-//       );
-
-//       // Services scroll animation
-//       gsap.utils.toArray('.service-item').forEach((item, i) => {
-//         gsap.fromTo(
-//           item,
-//           { x: -100, opacity: 0 },
-//           {
-//             x: 0,
-//             opacity: 1,
-//             duration: 1,
-//             ease: 'power3.out',
-//             scrollTrigger: {
-//               trigger: item,
-//               start: 'top 85%',
-//               end: 'bottom 15%',
-//             },
-//           }
-//         );
-//       });
-
-//       // Projects scroll animation
-//       gsap.utils.toArray('.project-item').forEach((item) => {
-//         gsap.fromTo(
-//           item,
-//           { y: 80, opacity: 0 },
-//           {
-//             y: 0,
-//             opacity: 1,
-//             duration: 1,
-//             ease: 'power3.out',
-//             scrollTrigger: {
-//               trigger: item,
-//               start: 'top 85%',
-//             },
-//           }
-//         );
-//       });
-//     }, heroRef);
-
-//     return () => ctx.revert();
-//   }, []);
-
-//   return (
-//     <Layout>
-//       <PageTransition>
-//       <div ref={containerRef}>
-//         {/* Hero */}
-//         <section className="min-h-[70vh] flex items-end pb-20 pt-43" ref={heroRef}>
-//           <div className="container mx-auto px-6 md:px-12">
-//             <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-//               <div className="md:col-span-8">
-//                 <span className="label-editorial text-muted-foreground mb-4 block">Our Services</span>
-//                 <h1 className="service-title headline-xl">
-//                   What We<br />Offer
-//                 </h1>
-//               </div>
-//               <div className="md:col-span-4 flex items-end">
-//                 <p className="body-editorial text-muted-foreground">
-//                   Comprehensive digital solutions tailored to your unique needs and objectives.
-//                 </p>
-//               </div>
-
-//               <div className="absolute inset-0 pointer-events-none">
-//                 <div className="absolute left-1/4 top-0 bottom-0 w-px bg-black/5 dark:bg-black/10" />
-//                 <div className="absolute left-1/2 top-0 bottom-0 w-px bg-black/5 dark:bg-black/10" />
-//                 <div className="absolute left-3/4 top-0 bottom-0 w-px bg-black/5 dark:bg-black/10" />
-//               </div>
-//             </div>
-//           </div>
-//         </section>
-
-//         {/* Services Grid */}
-//         <section className="py-20 md:py-32">
-//           <div className="container mx-auto px-6 md:px-12">
-//             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-              
-//               {services.map((service, index) => {
-//                 const IconComponent = service.icon;
-//                 return (
-//                   <div
-//                     key={service.number}
-//                     className="service-card group p-8 md:p-12 border border-foreground/10 hover:border-foreground/30 transition-all duration-500 bg-background"
-//                   >
-//                     <div className="flex justify-between items-start mb-8">
-//                       <span className="label-editorial text-muted-foreground">{service.number}</span>
-//                       <IconComponent className="w-8 h-8 text-foreground/30 group-hover:text-foreground transition-colors duration-500" />
-//                     </div>
-                    
-//                     <h3 className="text-2xl md:text-3xl font-bold uppercase tracking-tight mb-4">
-//                       {service.title}
-//                     </h3>
-                    
-//                     <p className="body-editorial text-muted-foreground mb-8">
-//                       {service.description}
-//                     </p>
-                    
-//                     <div className="h-px bg-foreground/10 mb-8" />
-                    
-//                     <ul className="grid grid-cols-2 gap-3">
-//                       {service.features.map((feature, i) => (
-//                         <li key={i} className="label-editorial text-muted-foreground">
-//                           {feature}
-//                         </li>
-//                       ))}
-//                     </ul>
-//                   </div>
-//                 );
-//               })}
-//             </div>
-//           </div>
-//         </section>
-
-//         {/* CTA */}
-//         <section className="py-20 md:py-32 bg-black text-white">
-//           <div className="container mx-auto px-6 md:px-12 text-center">
-//             <span className="label-editorial text-grey-400 mb-8 block">Ready to Start?</span>
-//             <h2 className="headline-md mb-12 max-w-3xl mx-auto">
-//               Let's discuss how we can help bring your vision to life.
-//             </h2>
-//             <Link 
-//               to="/contact" 
-//               className="btn-editorial group border-background text-background group-hover:bg-background group-hover:text-foreground inline-flex items-center gap-3"
-//             >
-//               Start a Project
-//               <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 duration-300" />
-//             </Link>
-//           </div>
-//         </section>
-//       </div>
-//       </PageTransition>
-//     </Layout>
-//   );
-// };
-
-// export default Services;
-
-
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
@@ -339,7 +5,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowUpRight, Globe, Palette, Smartphone, Code, Plug, Wrench, Cloud } from 'lucide-react';
 import { Layout } from '../../components/Layout';
 import PageTransition from "../../components/PageTransition";
-import servicesData from '../../Data/Services.json'; // Changed from 'Service' to 'servicesData'
+import servicesData from '../../Data/Services.json';
+
+gsap.registerPlugin(ScrollTrigger);
 
 // Import icon components
 const iconComponents = {
@@ -358,38 +26,250 @@ const services = servicesData.services || [];
 const Services = () => {
   const containerRef = useRef(null);
   const heroRef = useRef(null);
+  const titleRef = useRef(null);
+  const cardsRef = useRef([]);
+  const ctaRef = useRef(null);
 
   useEffect(() => {
+    // Hero animation
     const ctx = gsap.context(() => {
-     
+      // Main title animation - split characters
+      const chars = gsap.utils.toArray('.hero-char');
+      gsap.fromTo(chars,
+        {
+          y: 150,
+          opacity: 0,
+          rotateX: -20,
+          scale: 0.8
+        },
+        {
+          y: 0,
+          opacity: 1,
+          rotateX: 0,
+          scale: 1,
+          duration: 1.5,
+          ease: 'power4.out',
+          stagger: 0.03,
+          delay: 0.4
+        }
+      );
 
-      // Service cards - in AND out with staggered animation
-      gsap.utils.toArray('.service-card').forEach((card, i) => {
-        gsap.fromTo(
-          card,
-          { 
-            y: 100, 
+      // Subtitle animation with in/out
+      gsap.fromTo('.hero-subtitle',
+        {
+          y: 40,
+          opacity: 0,
+          scale: 0.95
+        },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 1.2,
+          ease: 'power3.out',
+          delay: 1.2,
+          scrollTrigger: {
+            trigger: '.hero-subtitle',
+            start: 'top 90%',
+            end: 'bottom 20%',
+            scrub: 1.5,
+            toggleActions: 'play none reverse none'
+          }
+        }
+      );
+
+      // Label animation
+      gsap.fromTo('.hero-label',
+        {
+          x: -30,
+          opacity: 0
+        },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1,
+          ease: 'power3.out',
+          delay: 0.8,
+          scrollTrigger: {
+            trigger: '.hero-label',
+            start: 'top 90%',
+            end: 'bottom 20%',
+            scrub: 1.5,
+            toggleActions: 'play none reverse none'
+          }
+        }
+      );
+
+      // Grid lines animation
+      const gridLines = gsap.utils.toArray('.grid-line');
+      gridLines.forEach((line, i) => {
+        gsap.fromTo(line,
+          {
+            scaleY: 0,
+            transformOrigin: "top center"
+          },
+          {
+            scaleY: 1,
+            duration: 2,
+            ease: 'power4.inOut',
+            delay: 0.8 + (i * 0.2),
+            scrollTrigger: {
+              trigger: line,
+              start: 'top 80%',
+              end: 'bottom 20%',
+              scrub: 1,
+              toggleActions: 'play none reverse none'
+            }
+          }
+        );
+      });
+
+    }, heroRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  useEffect(() => {
+    // Services grid animation with smooth in/out
+    const ctx = gsap.context(() => {
+      // Section title animation
+      gsap.fromTo('.section-title',
+        {
+          y: 80,
+          opacity: 0,
+          scale: 0.9,
+          rotateX: -10
+        },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          rotateX: 0,
+          duration: 1.2,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '.services-section',
+            start: 'top 85%',
+            end: 'top 40%',
+            scrub: 1.5,
+            toggleActions: 'play none reverse none'
+          }
+        }
+      );
+
+      // Cards animation with smooth in/out
+      cardsRef.current.forEach((card, i) => {
+        if (!card) return;
+        
+        // Entry animation
+        gsap.fromTo(card,
+          {
+            y: 150,
             opacity: 0,
             rotateX: -15,
-            scale: 0.9 
+            scale: 0.9,
+            filter: 'blur(10px)'
           },
           {
             y: 0,
             opacity: 1,
             rotateX: 0,
             scale: 1,
-            duration: 0.8,
-            delay: i * 0.1, // Stagger based on index
+            filter: 'blur(0px)',
+            duration: 1.2,
+            delay: i * 0.1,
             ease: 'power3.out',
             scrollTrigger: {
               trigger: card,
-              start: 'top 85%',
-              end: 'bottom 8%',
-              scrub: 1,
-              toggleActions: 'play none none reverse'
+              start: 'top 90%',
+              end: 'top 30%',
+              scrub: 1.5,
+              toggleActions: 'play none reverse none',
+              markers: false
             }
           }
         );
+
+        // Card content animation (staggered)
+        const contentElements = card.querySelectorAll('.card-content > *');
+        contentElements.forEach((el, j) => {
+          gsap.fromTo(el,
+            {
+              y: 30,
+              opacity: 0
+            },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.8,
+              delay: 0.3 + (j * 0.1),
+              ease: 'power3.out',
+              scrollTrigger: {
+                trigger: card,
+                start: 'top 80%',
+                end: 'top 40%',
+                scrub: 1,
+                toggleActions: 'play none reverse none'
+              }
+            }
+          );
+        });
+
+        // Features list animation
+        const features = card.querySelectorAll('.feature-item');
+        features.forEach((feature, j) => {
+          gsap.fromTo(feature,
+            {
+              x: -30,
+              opacity: 0
+            },
+            {
+              x: 0,
+              opacity: 1,
+              duration: 0.6,
+              delay: 0.5 + (j * 0.05),
+              ease: 'power3.out',
+              scrollTrigger: {
+                trigger: card,
+                start: 'top 75%',
+                end: 'top 45%',
+                scrub: 1,
+                toggleActions: 'play none reverse none'
+              }
+            }
+          );
+        });
+
+        // Hover effects
+        card.addEventListener('mouseenter', () => {
+          gsap.to(card, {
+            y: -15,
+            scale: 1.02,
+            duration: 0.6,
+            ease: 'power2.out'
+          });
+          gsap.to(card.querySelector('.card-icon'), {
+            rotate: 15,
+            scale: 1.1,
+            duration: 0.4,
+            ease: 'power2.out'
+          });
+        });
+
+        card.addEventListener('mouseleave', () => {
+          gsap.to(card, {
+            y: 0,
+            scale: 1,
+            duration: 0.6,
+            ease: 'power2.out'
+          });
+          gsap.to(card.querySelector('.card-icon'), {
+            rotate: 0,
+            scale: 1,
+            duration: 0.4,
+            ease: 'power2.out'
+          });
+        });
       });
 
     }, containerRef);
@@ -397,96 +277,131 @@ const Services = () => {
     return () => ctx.revert();
   }, []);
 
-useEffect(() => {
-    // Hero animation
+  useEffect(() => {
+    // CTA section animation
     const ctx = gsap.context(() => {
-      gsap.fromTo(
-        '.hero-title span',
-        { y: 200, opacity: 0 },
-        { y: 0, opacity: 1, stagger: 0.1, duration: 1.2, ease: 'power4.out', delay: 0.6 }
+      // Background gradient animation
+      gsap.fromTo('.cta-bg-gradient',
+        {
+          opacity: 0,
+          scale: 0.8,
+          rotation: -10
+        },
+        {
+          opacity: 1,
+          scale: 1,
+          rotation: 0,
+          duration: 1.5,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '.cta-section',
+            start: 'top 85%',
+            end: 'top 30%',
+            scrub: 1.5,
+            toggleActions: 'play none reverse none'
+          }
+        }
       );
 
-      gsap.fromTo(
-        '.hero-subtitle',
-        { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1, ease: 'power3.out', delay: 1.3 }
+      // CTA content animation
+      gsap.fromTo('.cta-content > *',
+        {
+          y: 50,
+          opacity: 0,
+          scale: 0.95
+        },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 1,
+          stagger: 0.2,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '.cta-section',
+            start: 'top 80%',
+            end: 'top 40%',
+            scrub: 1.5,
+            toggleActions: 'play none reverse none'
+          }
+        }
       );
 
+      // Button hover animation
+      const button = document.querySelector('.cta-button');
+      if (button) {
+        button.addEventListener('mouseenter', () => {
+          gsap.to('.button-arrow', {
+            x: 5,
+            y: -5,
+            duration: 0.3,
+            ease: 'power2.out'
+          });
+          gsap.to('.button-gradient', {
+            opacity: 1,
+            duration: 0.4,
+            ease: 'power2.out'
+          });
+        });
 
-      // Services scroll animation
-      gsap.utils.toArray('.service-item').forEach((item, i) => {
-        gsap.fromTo(
-          item,
-          { x: -100, opacity: 0 },
-          {
+        button.addEventListener('mouseleave', () => {
+          gsap.to('.button-arrow', {
             x: 0,
-            opacity: 1,
-            duration: 1,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: item,
-              start: 'top 85%',
-              end: 'bottom 15%',
-            },
-          }
-        );
-      });
-
-      // Projects scroll animation
-      gsap.utils.toArray('.project-item').forEach((item) => {
-        gsap.fromTo(
-          item,
-          { y: 80, opacity: 0 },
-          {
             y: 0,
-            opacity: 1,
-            duration: 1,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: item,
-              start: 'top 85%',
-            },
-          }
-        );
-      });
-    }, heroRef);
+            duration: 0.3,
+            ease: 'power2.out'
+          });
+          gsap.to('.button-gradient', {
+            opacity: 0.5,
+            duration: 0.4,
+            ease: 'power2.out'
+          });
+        });
+      }
+
+    }, ctaRef);
 
     return () => ctx.revert();
-  }, [])
+  }, []);
+
+  // Split text into characters for animation
+  const splitText = (text) => {
+    return text.split('').map((char, index) => (
+      <span key={`char-${index}`} className="hero-char inline-block">
+        {char === ' ' ? '\u00A0' : char}
+      </span>
+    ));
+  };
 
   return (
     <Layout>
       <PageTransition>
         <div>
           {/* Hero */}
-          <section className="min-h-[70vh] flex items-end pb-20 pt-43" ref={heroRef}>
-            <div className=" hero-title container mx-auto px-6 md:px-12">
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+          <section 
+            className="min-h-[70vh] flex items-end pb-20 pt-10 md:pt-30 relative overflow-hidden"
+            ref={heroRef}
+          >
+            <div className="container mx-auto px-6 md:px-12">
+              <div className="grid grid-cols-1 md:grid-cols-10 gap-8">
                 <div className="md:col-span-8">
-                  <span className="label-editorial text-muted-foreground mb-4 block">Our Services</span>
-              <div className="hero-title hero-scroll overflow-hidden top-100 md:top-30 lg:top-1/2" >
-            <h1 className="headline-xl">
-                <span className="block overflow-hidden">
-                <span className="block">
-                    {'What we'.split('').map((char, index) => (
-                    <span key={`shaping-${index}`} className="inline-block">
-                        {char === ' ' ? '\u00A0' : char}
-                    </span>
-                    ))}
-                </span>
-                </span>
-                <span className="block overflow-hidden">
-                <span className="block  ">
-                    {'offers'.split('').map((char, index) => (
-                    <span key={`digital-${index}`} className="inline-block">
-                        {char === ' ' ? '\u00A0' : char}
-                    </span>
-                    ))}
-                </span>
-                </span>
-             
-            </h1>
-            </div>
+                  <span className="hero-label label-editorial text-muted-foreground mb-6 block">
+                    Our Services
+                  </span>
+                  <div ref={titleRef} className="overflow-hidden">
+                    <h1 className="headline-xl mb-8">
+                      <div className="block overflow-hidden mb-2">
+                        <span className="block">
+                          {splitText('What We')}
+                        </span>
+                      </div>
+                      <div className="block overflow-hidden">
+                        <span className="block">
+                          {splitText('Offer')}
+                        </span>
+                      </div>
+                    </h1>
+                  </div>
                 </div>
                 <div className="hero-subtitle md:col-span-4 flex items-end">
                   <p className="body-editorial text-muted-foreground">
@@ -494,51 +409,90 @@ useEffect(() => {
                   </p>
                 </div>
 
+                {/* Grid lines */}
                 <div className="absolute inset-0 pointer-events-none">
-                  <div className="absolute left-1/4 top-0 bottom-0 w-px bg-black/5 dark:bg-black/10" />
-                  <div className="absolute left-1/2 top-0 bottom-0 w-px bg-black/5 dark:bg-black/10" />
-                  <div className="absolute left-3/4 top-0 bottom-0 w-px bg-black/5 dark:bg-black/10" />
+                  <div className="grid-line absolute left-1/4 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-black/10 to-transparent dark:via-white/10" />
+                  <div className="grid-line absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-black/10 to-transparent dark:via-white/10" />
+                  <div className="grid-line absolute left-3/4 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-black/10 to-transparent dark:via-white/10" />
                 </div>
               </div>
             </div>
           </section>
-        
 
           {/* Services Grid */}
-          <section className="py-20 md:py-32" ref={containerRef}>
-            <div className="container mx-auto px-6 md:px-12">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+          <section 
+            className="services-section py-20 md:py-32 relative"
+            ref={containerRef}
+          >
+            {/* Background pattern */}
+            <div className="absolute inset-0 opacity-5">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-secondary/20" />
+            </div>
+            
+            <div className="container mx-auto px-6 md:px-12 relative z-10">
+              <div className="mb-16 md:mb-24">
+                <h2 className="section-title text-4xl md:text-5xl font-bold uppercase tracking-tight text-center">
+                  Our Expertise
+                </h2>
+              </div>
+              
+              <div className="grid grid-cols- md:grid-cols- gap-6 md:gap-8">
                 {services.map((service, index) => {
                   const IconComponent = iconComponents[service.icon] || Globe;
                   return (
-                    <Link 
+                    <div
                       key={service.id || service.number}
-                      to={`/services/${service.slug}`}
-                      className="service-card group p-8 md:p-12 border border-foreground/10 hover:border-foreground/30 transition-all duration-500 bg-background block"
+                      ref={el => cardsRef.current[index] = el}
+                      className="service-card relative group"
                     >
-                      <div className="flex justify-between items-start mb-8">
-                        <span className="label-editorial text-muted-foreground">{service.number}</span>
-                        <IconComponent className="w-8 h-8 text-foreground/30 group-hover:text-foreground transition-colors duration-500" />
-                      </div>
-                      
-                      <h3 className="text-2xl md:text-3xl font-bold uppercase tracking-tight mb-4">
-                        {service.title}
-                      </h3>
-                      
-                      <p className="body-editorial text-muted-foreground mb-8">
-                        {service.description}
-                      </p>
-                      
-                      <div className="h-px bg-foreground/10 mb-8" />
-                      
-                      <ul className="grid grid-cols-2 gap-3">
-                        {service.features.slice(0, 4).map((feature, i) => (
-                          <li key={i} className="label-editorial text-muted-foreground">
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-                    </Link>
+                      <Link 
+                        to={`/services/${service.slug}`}
+                        className="block p-8 md:p-10 border border-foreground/10 hover:border-foreground/20 transition-colors duration-300 bg-background/50 backdrop-blur-sm relative overflow-hidden"
+                      >
+                        {/* Card background effects */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                        
+                        <div className="card-content relative z-10">
+                          <div className="flex justify-between items-start mb-10">
+                            <span className="label-editorial text-muted-foreground">
+                              {String(service.number).padStart(2, '0')}
+                            </span>
+                            <div className="relative">
+                              <IconComponent className="card-icon w-10 h-10 text-foreground/20 group-hover:text-foreground/40 transition-all duration-500" />
+                              <div className="absolute inset-0 bg-primary/10 blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-500" />
+                            </div>
+                          </div>
+                          
+                          <h3 className="text-2xl md:text-3xl font-bold uppercase tracking-tight mb-6">
+                            {service.title}
+                          </h3>
+                          
+                          <p className="body-editorial text-muted-foreground mb-10">
+                            {service.description}
+                          </p>
+                          
+                          <div className="h-px bg-gradient-to-r from-transparent via-foreground/10 to-transparent mb-8" />
+                          
+                          <ul className="grid grid-cols-2 gap-3">
+                            {service.features.slice(0, 4).map((feature, i) => (
+                              <li 
+                                key={i} 
+                                className="feature-item label-editorial text-muted-foreground flex items-center"
+                              >
+                                <span className="w-1 h-1 bg-primary rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100" />
+                                {feature}
+                              </li>
+                            ))}
+                          </ul>
+                          
+                          {/* Arrow indicator */}
+                          <div className="absolute bottom-8 right-8 opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-x-2 group-hover:-translate-y-2">
+                            <ArrowUpRight className="w-5 h-5 text-foreground/30 group-hover:text-primary transition-colors duration-300" />
+                          </div>
+                        </div>
+                      </Link>
+                    </div>
                   );
                 })}
               </div>
@@ -546,19 +500,37 @@ useEffect(() => {
           </section>
 
           {/* CTA */}
-          <section className="py-20 md:py-32 bg-black text-white">
-            <div className="container mx-auto px-6 md:px-12 text-center">
-              <span className="label-editorial text-grey-400 mb-8 block">Ready to Start?</span>
-              <h2 className="headline-md mb-12 max-w-3xl mx-auto">
-                Let's discuss how we can help bring your vision to life.
-              </h2>
-              <Link 
-                to="/contact" 
-                className="btn-editorial group border-background text-background group-hover:bg-background group-hover:text-foreground inline-flex items-center gap-3"
-              >
-                Start a Project
-                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 duration-300" />
-              </Link>
+          <section 
+            className="cta-section py-20 md:py-32 bg-black text-white relative overflow-hidden"
+            ref={ctaRef}
+          >
+            {/* Animated background gradients */}
+            <div className="cta-bg-gradient absolute inset-0 opacity-20">
+              <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-r from-primary/30 via-transparent to-secondary/30 animate-gradient-xy" />
+              <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-r from-secondary/20 via-transparent to-primary/20 animate-gradient-xy-reverse" />
+            </div>
+            
+            <div className="container cta-button mx-auto px-6 md:px-12 text-center relative z-10">
+              <div className="cta-content max-w-3xl mx-auto">
+                <span className="label-editorial text-grey-400 mb-8 block">
+                  Ready to Start?
+                </span>
+                
+                <h2 className="headline-md mb-12">
+                  Let's discuss how we can help bring your vision to life.
+                </h2>
+                
+                <Link 
+                  to="/contact" 
+                  className="cta-button btn-editorial group border-background text-background hover:bg-background hover:text-foreground inline-flex items-center gap-3 relative overflow-hidden"
+                >
+                  <span className="relative z-10">Start a Project</span>
+                  <ArrowUpRight className="button-arrow w-4 h-4 relative z-10" />
+                  
+                  {/* Button gradient animation */}
+                  <div className="button-gradient absolute inset-0 bg-gradient-to-r from-primary via-secondary to-primary bg-[length:200%_100%] opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
+                </Link>
+              </div>
             </div>
           </section>
         </div>
