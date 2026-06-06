@@ -349,7 +349,7 @@ export const Footer = () => {
     },
     {
       icon: MapPin,
-      content: 'Mohan Arcade, Thamna Chokdi, Umreth-388220, Gujarat, India',
+      content: 'Vadodara - Gujarat, India',
       type: 'address'
     }
   ];

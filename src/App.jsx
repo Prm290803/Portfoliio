@@ -2,7 +2,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { LenisProvider } from "./Lenis";
 import DigitalCurtainTransition from "./components/PageTransition";
-
+import { Snowfall, SnowfallCanvas } from "react-snowfall";
 import HomePage from "./Pages/HomePage/homepage";
 import './App.css'  
 import './index.css'
@@ -17,6 +17,7 @@ import { useEffect, useState } from "react";
 import ProjectPage from "./Pages/Work/ProjectPage";
 import ServiceDetail from "./Pages/Services/ServiceDetails";
 import { Analytics } from '@vercel/analytics/react';
+// import Snowflake from "react-snowfall/lib/Snowflake";
 export default function App() {
   const location = useLocation();
   const [loading, setLoading] = useState(location.pathname === "/");
@@ -34,7 +35,9 @@ export default function App() {
     <>
     <Analytics />
     <LenisProvider>
+
       <DigitalCurtainTransition>
+        
         <AnimatePresence mode="wait">
           {loading ? (
             <Loader key="loader" />

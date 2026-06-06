@@ -9,7 +9,7 @@ import PageTransition from "../../components/PageTransition";
 import ProjectData from "../../Data/Project.json"
 import './homepage.css';
 import '../../App.css';
-
+import { Snowfall, SnowfallCanvas } from "react-snowfall";
 gsap.registerPlugin(ScrollTrigger);
 
 const services = [
@@ -126,7 +126,6 @@ const Home = () => {
 
   return (
     <>
-    
 
     <Layout>
       <PageTransition >

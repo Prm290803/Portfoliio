@@ -889,7 +889,7 @@ const ProjectPage = () => {
                   {project.features.map((feature, index) => (
                     <div key={index} className="feature-item interactive-element p-6 border border-gray-200 rounded-2xl hover:border-black hover:shadow-xl transition-all duration-300 group bg-white transform hover:-translate-y-2">
                       <div className="flex items-start gap-4">
-                        <div className="flex-shrink-0 p-3 rounded-xl bg-gray-100 group-hover:bg-black transition-all duration-300 transform group-hover:scale-110">
+                        <div className="flex-shrink-0 p-3 rounded-xl bg-gray-100 group-hover:bg-gray-100 transition-all duration-300 transform group-hover:scale-110">
                           {getIconForFeature(feature.title)}
                         </div>
                         <div>

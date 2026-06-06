@@ -384,6 +384,94 @@
         "userSatisfaction": "4.5/5.0",
         "bookingConflicts": "< 1%"
       }
+    },
+    {
+  "id": 6,
+  "title": "MarsBazaar – Industrial Marketplace & AI-Powered Business Platform",
+  "category": "Full Stack Web Development",
+  "year": "2025",
+  "size": "large",
+  "description": "Industrial marketplace platform connecting businesses with industrial properties, vendors, financing solutions, approvals, and project execution services through a unified digital ecosystem.",
+
+  "image": "https://res.cloudinary.com/dq85wnwj3/image/upload/v1780752511/Screenshot_2026-06-06_184250_f0osqc.png",
+  "images": [
+    "https://res.cloudinary.com/dq85wnwj3/image/upload/v1780752511/Screenshot_2026-06-06_184250_f0osqc.png",  
+    "https://res.cloudinary.com/dq85wnwj3/image/upload/v1780752507/Screenshot_2026-06-06_184351_wzexc6.png",
+    "https://res.cloudinary.com/dq85wnwj3/image/upload/v1780752504/Screenshot_2026-06-06_184419_cjffpx.png"
+    
+  ],
+
+  "liveUrl": "https://marsbazaar.com/marsbazaar",
+
+  "duration": "1 months",
+  "teamSize": "Development Team",
+  "role": "Full Stack Web Development Industrial Marketplace",
+
+  "problem": "Industrial businesses often struggle with fragmented processes involving land acquisition, vendor discovery, project financing, approvals, and project execution. Managing these services across multiple providers creates delays and operational inefficiencies.",
+
+  "solution": "Developed a scalable web platform that centralizes industrial project planning, vendor discovery, financing solutions, approvals management, and business networking into a single digital ecosystem.",
+
+  "features": [
+    {
+      "title": "Industrial Marketplace",
+      "description": "Centralized platform for industrial vendors, service providers, and businesses"
+    },
+    {
+      "title": "Vendor Discovery System",
+      "description": "Browse and connect with verified industrial vendors and suppliers"
+    },
+    {
+      "title": "Industrial Property Network",
+      "description": "Access industrial property listings and project opportunities"
+    },
+    {
+      "title": "Business Advisory Services",
+      "description": "Integrated solutions for project planning and execution"
+    },
+    {
+      "title": "ERP Integration",
+      "description": "Business management workflows with secure user access"
+    },
+    {
+      "title": "Responsive User Experience",
+      "description": "Optimized experience across desktop, tablet, and mobile devices"
     }
+  ],
+
+  "technologies": [
+    "React.js",
+    "Tailwind CSS",
+    "JavaScript",
+    "Node.js",
+    "REST API",
+    "ERP Integration",
+    "Responsive Design",
+    "Git/GitHub"
+  ],
+
+  "tags": [
+    "Industrial Marketplace",
+    "B2B Platform",
+    "ERP",
+    "Full Stack",
+    "React",
+    "Client Project"
+  ],
+
+  "achievements": [
+    "Developed modern UI for industrial marketplace ecosystem",
+    "Created responsive user experience across devices",
+    "Implemented scalable frontend architecture",
+    "Optimized performance and navigation flows",
+    "Contributed to digital transformation of industrial project workflows"
+  ],
+
+  "metrics": {
+    "platformType": "B2B Industrial Marketplace",
+    "businessAssociates": "55+",
+    "approvalsFacilitated": "100+",
+    "financingEnabled": "₹500Cr+"
+  }
+}
   ]
 }

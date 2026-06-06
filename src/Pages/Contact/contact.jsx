@@ -293,7 +293,7 @@ const Contact = () => {
                   <div>
                     <span className="label-editorial text-muted-foreground mb-4 block">Follow Us</span>
                     <div className="flex grid grid-cols- lg:grid-cols-4 gap-6">
-                      {['Twitter', 'LinkedIn', 'Dribbble', 'GitHub'].map((social) => (
+                      {['Instagram'].map((social) => (
                         <a
                           key={social}
                           href="#"
