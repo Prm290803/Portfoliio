@@ -138,17 +138,17 @@ const Home = () => {
              <div className="absolute  md:left-8 top-1/3 sm:top-1/2 md:top-5 -translate-y-1/2 lg:block md:hidden sm:hidden">
             <div className="relative lg:left-8 right-20 top-150 -translate-y-1/2 hidden md:block">
           <span className="label-vertical hero-subtitle2 text-foreground/80 tracking-[0.4em] font-medium">
-            Digital Studio — Est. 2024
+            Building Websites That Build Businesses
           </span>
         </div>
 
             </div>
               {/* Main headline */}
             <div className="hero-title hero-scroll overflow-hidden top-100 md:top-30 lg:top-1/2" >
-            <h1 className="headline-xl">
+            <h1 className="headline-lg">
                 <span className="block overflow-hidden">
                 <span className="block">
-                    {'Shaping'.split('').map((char, index) => (
+                    {'Need a Website'.split('').map((char, index) => (
                     <span key={`shaping-${index}`} className="inline-block">
                         {char === ' ' ? '\u00A0' : char}
                     </span>
@@ -157,7 +157,7 @@ const Home = () => {
                 </span>
                 <span className="block overflow-hidden">
                 <span className="block text-stroke ">
-                    {'Digital'.split('').map((char, index) => (
+                    {'That Grows'.split('').map((char, index) => (
                     <span key={`digital-${index}`} className="inline-block">
                         {char === ' ' ? '\u00A0' : char}
                     </span>
@@ -166,7 +166,7 @@ const Home = () => {
                 </span>
                 <span className="block overflow-hidden">
                 <span className="block">
-                    {'Experiences'.split('').map((char, index) => (
+                    {'Your Business?'.split('').map((char, index) => (
                     <span key={`experiences-${index}`} className="inline-block">
                         {char === ' ' ? '\u00A0' : char}
                     </span>
@@ -177,7 +177,7 @@ const Home = () => {
             </div>
 
               {/* Subtitle */}
-              <div className="hero-subtitle mt-6 md:mt-10 max-w-xl md:ml-auto">
+              {/* <div className="hero-subtitle mt-6 md:mt-10 max-w-xl md:ml-auto">
              <p className="body-editorial text-muted-foreground 
                     text-sm xs:text-base text-black/50 sm:text-lg md:text-xl lg:text-xl 
                  text-left xs:text-center sm:text-center md:text-right lg:text-right 
@@ -185,8 +185,16 @@ const Home = () => {
                 We craft exceptional digital products through design-first engineering, 
                 transforming complex challenges into elegant, scalable solutions.
                 </p>
+                </div> */}
+                <div className="hero-subtitle mt-6 md:mt-10 max-w-xl md:ml-auto">
+                <p className="body-editorial text-muted-foreground 
+                    text-sm xs:text-base text-black/50 sm:text-lg md:text-xl lg:text-xl 
+                 text-left xs:text-center sm:text-center md:text-right lg:text-right 
+                leading-relaxed sm:leading-relaxed md:leading-loose lg:leading-loose">
+                BuildCrew helps businesses attract more customers online through professional website development,
+                 eCommerce solutions, SEO services, and digital growth strategies.
+                </p>
                 </div>
-
               {/* CTA */}
      <div className="hero-cta mt-6 mb-20 md:mt-12">
   
